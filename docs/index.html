@@ -576,6 +576,9 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 .toast{position:fixed;left:50%;bottom:24px;z-index:70;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--ink);color:#e4e6ff;font-size:14.5px;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow-l);transition:opacity .3s var(--ease),transform .45s var(--spring);max-width:calc(100vw - 32px)}
 .toast b{color:#fff;font-weight:500}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+.claim-note{font-size:13.5px;color:var(--muted);margin:14px 0 10px;max-width:46ch}
+.mini.pending{border-style:dashed;border-color:var(--blue)}
+.mini.pending .no{color:var(--blue)}
 /* mobile buy bar */
 .mbar{transition:transform .5s var(--ease)!important;position:fixed;left:12px;right:12px;bottom:12px;z-index:45;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 16px;border-radius:16px;background:rgba(10,11,26,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;font-size:14px;box-shadow:var(--shadow-l);transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .mbar.show{transform:none}
@@ -905,7 +908,8 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
               <label><span>Tilt</span><input type="range" id="stk-r" min="-20" max="20" value="-6"></label>
               <span class="stk-tip">Drag the sticker on the card to place it.</span>
             </div>
-            <div class="btns"><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-claim>Claim No. 01 · $9</a><button type="button" class="btn btn-line" id="ed-dl">Download your card</button></div>
+            <p class="claim-note">At checkout, paste your number and handle into the two Ship Kit boxes. Your card goes on the wall about 10 minutes after you pay.</p>
+            <div class="btns"><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" target="_blank" rel="noopener" data-buy data-claim>Claim No. 01 · $9</a><button type="button" class="btn btn-line" id="ed-dl">Download your card</button></div>
             <p class="ed-note">Pick any open number, then type it at checkout. First come, first served.</p>
           </div>
         </div>
@@ -998,7 +1002,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 <div class="mbar" id="mbar"><span data-mbar>No. 01 is open · $9</span><a class="btn btn-lime btn-sm" href="https://zione8t.gumroad.com/l/shipkit" data-buy>Claim it</a></div>
 
 <script>
-/* ---- Sales state: .github/workflows/founders.yml rewrites these two lines from Gumroad every 15 minutes ---- */
+/* ---- Sales state: .github/workflows/founders.yml rewrites these two lines from Gumroad every 5 minutes ---- */
 const SOLD = 0;                 // total Pro copies sold (all versions)
 const FOUNDERS = [];            // e.g. [{ n: 1, name: "@handle" }] for buyers who opted in
 /* ------------------------------------------------------------- */
@@ -1010,14 +1014,17 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const nav = document.getElementById('nav');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
 
+function toast(html, ms = 3200) {
+  let t = document.getElementById('toast');
+  if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+  t.innerHTML = html;
+  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), ms);
+}
 // until the Gumroad link is filled in, checkout buttons explain instead of opening a blank page
 document.addEventListener('click', e => {
   const a = e.target.closest('a[href="' + 'GUMROAD' + '_URL"]'); if (!a) return;
   e.preventDefault();
-  let t = document.getElementById('toast');
-  if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
-  t.innerHTML = '<b>Checkout opens on launch day.</b> The store link isn’t connected yet.';
-  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3200);
+  toast('<b>Checkout opens on launch day.</b> The store link isn’t connected yet.');
 });
 
 // in-page links: smooth, and they land just below the sticky nav
@@ -1165,7 +1172,7 @@ function renderCard(spin) {
   if (CARD.handle) { av.src = 'https://unavatar.io/x/' + CARD.handle; av.hidden = false; av.onerror = () => (av.hidden = true); } else av.hidden = true;
   const xl = document.getElementById('xp-logo');
   if (CARD.logo) { xl.querySelector('img').src = CARD.logo.src; xl.hidden = false; } else xl.hidden = true;
-  document.querySelectorAll('.mini.open').forEach(m => { const on = +m.dataset.n === CARD.num; m.classList.toggle('next', on); m.setAttribute('aria-pressed', on); m.querySelector('.no').textContent = on ? 'YOURS?' : 'OPEN'; m.querySelector('.tri path').setAttribute('fill', on ? '#0a0b1a' : '#d8ff3d'); });
+  document.querySelectorAll('.mini.open:not(.pending)').forEach(m => { const on = +m.dataset.n === CARD.num; m.classList.toggle('next', on); m.setAttribute('aria-pressed', on); m.querySelector('.no').textContent = on ? 'YOURS?' : 'OPEN'; m.querySelector('.tri path').setAttribute('fill', on ? '#0a0b1a' : '#d8ff3d'); });
   window.SHIPKIT_3D?.set(CARD, spin);
 }
 
@@ -1239,6 +1246,27 @@ function renderCard(spin) {
   renderCard(false);
   if (q.get('n') || q.get('h')) setTimeout(() => document.getElementById('founders').scrollIntoView({ block: 'start' }), 300);
 })();
+// claiming: carry the number and handle to checkout, and remember the claim on this device until the wall shows it
+(function claims() {
+  const KEY = 'shipkit-claim';
+  const get = () => { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; } };
+  const set = v => { try { v ? localStorage.setItem(KEY, JSON.stringify(v)) : localStorage.removeItem(KEY); } catch {} };
+  document.querySelectorAll('[data-claim]').forEach(a => a.addEventListener('click', () => {
+    if (!NEXT) return;
+    const note = `No. ${pad(CARD.num)}${CARD.handle ? ' · @' + CARD.handle : ''}`;
+    set({ n: CARD.num, h: CARD.handle || '', at: Date.now() });
+    navigator.clipboard?.writeText(note).catch(() => {});
+    toast(`<b>Copied “${escapeHtml(note)}”.</b> Paste it into the two Ship Kit boxes at checkout. Your card goes on the wall about 10 minutes after you pay.`, 9000);
+  }));
+  const c = get(); if (!c) return;
+  const mine = c.h ? FOUNDERS.find(f => f.name.toLowerCase() === '@' + c.h.toLowerCase()) : null;
+  if (mine) { set(null); setTimeout(() => toast(`<b>You're No. ${pad(mine.n)} on the founders wall.</b>${mine.n !== c.n ? ` No. ${pad(c.n)} went to someone a moment earlier.` : ''} Thanks for backing Ship Kit.`, 8000), 900); return; }
+  if (Date.now() - c.at > 24 * 3600e3) { set(null); return; }
+  const slot = document.querySelector(`.mini.open[data-n="${c.n}"]`);
+  if (slot) { slot.classList.add('pending'); slot.querySelector('.no').textContent = 'CONFIRMING'; slot.querySelector('.claim').textContent = 'Paid? Up in ~10 min'; }
+  setTimeout(() => toast(`<b>If you've paid, you're in.</b> Your card No. ${pad(c.n)} shows up here about 10 minutes after checkout. The receipt email has your download now.`, 8000), 900);
+})();
+
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
 // meter: the 19 checks
