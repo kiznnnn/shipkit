@@ -998,7 +998,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 <div class="mbar" id="mbar"><span data-mbar>No. 01 is open · $9</span><a class="btn btn-lime btn-sm" href="https://zione8t.gumroad.com/l/shipkit" data-buy>Claim it</a></div>
 
 <script>
-/* ---- Sales state: update these two lines as copies sell ---- */
+/* ---- Sales state: .github/workflows/founders.yml rewrites these two lines from Gumroad every 15 minutes ---- */
 const SOLD = 0;                 // total Pro copies sold (all versions)
 const FOUNDERS = [];            // e.g. [{ n: 1, name: "@handle" }] for buyers who opted in
 /* ------------------------------------------------------------- */
@@ -1140,8 +1140,9 @@ window.SK_TEX = { cardFront, cardBack };
 
 // founders: who holds which number, the card you're building, and every place that shows it
 const TAKEN = new Map();
-for (let n = 1; n <= Math.min(SOLD, 25); n++) TAKEN.set(n, { name: 'Founder' });
 FOUNDERS.forEach(f => TAKEN.set(f.n, f));
+// founding sales not listed by name (manual updates) take the lowest open numbers
+for (let n = 1, extra = Math.min(SOLD, 25) - TAKEN.size; n <= 25 && extra > 0; n++) if (!TAKEN.has(n)) { TAKEN.set(n, { name: 'Founder' }); extra--; }
 const NEXT = (() => { for (let n = 1; n <= 25; n++) if (!TAKEN.has(n)) return n; return 0; })();
 const OPEN = [...Array(25)].map((_, i) => i + 1).filter(n => !TAKEN.has(n));
 const pad = n => String(n).padStart(2, '0');
