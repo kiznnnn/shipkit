@@ -1,0 +1,20 @@
+{
+  "name": "shipkit",
+  "version": "0.3.0",
+  "description": "Ship Kit (free): a launch pre-flight that catches what quietly sinks launches, a landing page written from your repo, and a post linter with an independent critic that checks drafts against each platform's rules. /shipkit:check, /shipkit:page and /shipkit:lint.",
+  "author": {
+    "name": "Zion"
+  },
+  "homepage": "https://github.com/kiznnnn/shipkit",
+  "license": "MIT",
+  "keywords": [
+    "launch",
+    "landing-page",
+    "marketing",
+    "indie",
+    "product-hunt",
+    "checklist",
+    "copywriting",
+    "reddit"
+  ]
+}

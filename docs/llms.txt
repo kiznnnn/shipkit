@@ -1,0 +1,27 @@
+# Ship Kit
+
+> A Claude Code plugin that runs an indie maker's launch. It reads your repo and live site. Then it writes what a launch needs: a scored pre-flight check, a landing page, posts in your voice checked against each platform's rules, a dated run sheet and a recap. It never posts for you.
+
+## Commands
+
+- /shipkit:check (free): a scored launch pre-flight of the repo and live site, with the evidence and the fix for each item.
+- /shipkit:page (free): a one-file landing page from the repo, with the share image, llms.txt and sitemap.
+- /shipkit:lint (free): checks any launch post with a linter for AI tells, an independent critic and the target platform's dated rules.
+- /shipkit:posts (Pro): X, Reddit, Show HN, Product Hunt, directory and personal-message drafts in the maker's voice.
+- /shipkit:seo (Pro): one keyword-researched page a week, with a QA pass.
+- /shipkit:launch (Pro): all of the above plus a dated run sheet, UTM links, a directory plan, a tracker and a launch kit page.
+- /shipkit:recap (Pro): launch totals from the tracker, listing checks, a results post and a receipts card image.
+
+## Price
+
+Free edition: MIT licensed on GitHub. Pro: one payment of $9 for the first 25 copies, then $19 for the next 50, then $29. Studio: $69 for five people. 14-day refund.
+
+## Requirements
+
+Claude Code on any plan and Node 18 or newer. No other paid services.
+
+## Links
+
+- Site: https://kiznnnn.github.io/shipkit/
+- Free plugin: https://github.com/kiznnnn/shipkit
+- Pro: https://zione8t.gumroad.com/l/shipkit

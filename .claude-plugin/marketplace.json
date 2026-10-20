@@ -1,0 +1,14 @@
+{
+  "name": "shipkit",
+  "description": "Ship Kit: Claude Code runs your launch.",
+  "owner": {
+    "name": "Zion"
+  },
+  "plugins": [
+    {
+      "name": "shipkit",
+      "source": "./",
+      "description": "Launch pre-flight, a landing page from your repo, and a post linter. Free."
+    }
+  ]
+}
