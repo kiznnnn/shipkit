@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **Project launch kit.** `/shipkit:launch` writes `schedule.json` and builds `kit.html` from it with `build-kit.mjs`, so edits rebuild in one command. One kit can cover several products launching in the same weeks, spaced so they never share a first hour, and filtered by product.
+
 ## 0.3.0 (2026-10-20)
 
 - **New: `/shipkit:lint` (free).** Checks any launch post before it goes out. The linter flags AI and hype tells. An independent critic reads the post as that platform's audience. The subreddit's dated rules catch what would get it removed. You get a verdict, a score, the weakest line and fixes in your own voice. It triggers from plain questions like "is this tweet cringe?" and never touches the original.
