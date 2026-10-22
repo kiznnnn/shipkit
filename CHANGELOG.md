@@ -1,6 +1,17 @@
 # Changelog
 
-## Unreleased
+## 0.4.0 (2026-10-21)
+
+- **New: `/shipkit:outreach` (Pro).** It finds 20 real people who'd want your product right now, from their own public posts from the last 14 days: people asking for a tool, complaining about the problem, or about to need it. It writes one personal message for each one, in your voice, under 60 words, with the follow-up for when they say yes. Every message goes through the linter and the critic. The results go into `people.csv` and an Outreach tab in the kit. You send each one yourself.
+- **New: `/shipkit:today` (Pro).** The morning brief: what goes out today, what posts by itself and what you post live, the exact words and where they go, who to message next and which follow-ups are due, plus yesterday's numbers.
+- **The launch kit, rebuilt for launch week.**
+  - Day tabs, and an Up next bar that jumps to the next card you haven't ticked.
+  - The real video or image previews on every card, with a Copy file path button so you attach the right file.
+  - An Open button on every card: X's composer with the post already filled in, or the subreddit's submit page with the title and body filled in.
+  - Scheduled posts are marked "posts by itself" and show only the reply you still need to post.
+  - Character counts against X's limit.
+  - Product filters and a "Not done" filter.
+  - Missing media is flagged as "make this first".
 
 - **Project launch kit.** `/shipkit:launch` writes `schedule.json` and builds `kit.html` from it with `build-kit.mjs`, so edits rebuild in one command. One kit can cover several products launching in the same weeks, spaced so they never share a first hour, and filtered by product.
 
