@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kiznnnn.github.io/shipkit/sitemap.xml
+Sitemap: https://shipkit.tech/sitemap.xml

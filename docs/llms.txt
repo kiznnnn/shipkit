@@ -22,6 +22,6 @@ Claude Code on any plan and Node 18 or newer. No other paid services.
 
 ## Links
 
-- Site: https://kiznnnn.github.io/shipkit/
+- Site: https://shipkit.tech/
 - Free plugin: https://github.com/kiznnnn/shipkit
 - Pro: https://zione8t.gumroad.com/l/shipkit
