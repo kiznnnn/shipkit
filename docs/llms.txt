@@ -11,6 +11,12 @@
 - /shipkit:seo (Pro): one keyword-researched page a week, with a QA pass.
 - /shipkit:launch (Pro): all of the above plus a dated run sheet, UTM links, a directory plan, a tracker and a launch kit page.
 - /shipkit:recap (Pro): launch totals from the tracker, listing checks, a results post and a receipts card image.
+- /shipkit:outreach (Pro): finds up to 20 real people from their recent public posts and writes one personal message and follow-up for each. The maker sends them.
+- /shipkit:today (Pro): the launch morning brief: what goes out today, at what time, with every word ready to paste.
+
+## Launch Check (free web tool)
+
+https://shipkit.tech/check: paste a URL and get a 0–100 launch score in about 10 seconds. It checks the share preview image and X card, title and description, a visible price, a way to try or buy, noindex, robots.txt rules for search and AI bots, the phone viewport, analytics, a custom domain and a contact link, with a fix for each problem. No sign-up.
 
 ## Price
 
@@ -23,5 +29,6 @@ Claude Code on any plan and Node 18 or newer. No other paid services.
 ## Links
 
 - Site: https://shipkit.tech/
+- Launch Check: https://shipkit.tech/check
 - Free plugin: https://github.com/kiznnnn/shipkit
 - Pro: https://zione8t.gumroad.com/l/shipkit
