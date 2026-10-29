@@ -134,6 +134,10 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
       <a class="btn btn-ink" id="tw" target="_blank" rel="noopener">Share my score on X</a>
       <button class="btn btn-line" id="again" type="button">Check another page</button>
     </div>
+    <div class="more" style="margin:28px 0 0">
+      <div><h3>Want to know what to fix first?</h3><p>Get a written teardown of this page within 12 hours: every problem with its fix, a rewritten hero you can paste in, and why visitors leave.</p></div>
+      <div class="more-cta"><a class="btn btn-lime" id="td" href="/teardown">Get a teardown · $19</a></div>
+    </div>
   </section>
 
   <section class="more">
@@ -180,6 +184,7 @@ function show(d) {
   $('#list').innerHTML = d.findings.map((x, i) => `<div class="item ${x.level}" style="animation-delay:${i * 60}ms"><span class="chip">${x.level === 'pass' ? 'ok' : x.level}</span><b>${esc(x.title)}</b><p>${esc(x.detail)}</p>${x.level !== 'pass' && x.fix ? `<p><code>${esc(x.fix)}</code></p>` : ''}</div>`).join('');
   const text = `My launch page scored ${d.score}/100 on Launch Check${fails ? ` (${fails} thing${fails > 1 ? 's' : ''} to fix)` : ''}.\n\nfree check here:`;
   $('#tw').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://shipkit.tech/check');
+  $('#td').href = '/teardown?url=' + encodeURIComponent(d.host);
   $('#result').hidden = false;
   $('#result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
