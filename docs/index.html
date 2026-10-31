@@ -317,6 +317,11 @@ footer a:hover{color:var(--ink)}
 
 /* ===== polish: motion, stats, marquee, founders, footer ===== */
 ::selection{background:var(--lime);color:var(--ink)}
+/* a hello strip for visitors arriving from a launch board (?ref=shipdesk or a shipdesk.dev referrer) */
+.hello{background:var(--ink);color:#e4e6ff;font-size:14px}
+.hello .wrap{display:flex;align-items:center;justify-content:center;gap:14px;min-height:44px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap;text-align:center}
+.hello a{color:var(--lime);font-weight:500}
+.hello button{background:none;border:0;color:#9aa0c4;font:inherit;cursor:pointer;padding:4px 8px}
 .navlinks a.on{color:var(--ink)}
 .navlinks a{position:relative}
 .navlinks a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1.5px;background:var(--blue);border-radius:1px;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
@@ -646,6 +651,16 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="hello" id="hello" hidden><div class="wrap"><span>Hi from ShipDesk. Before you launch, run the free check on your own page.</span><a href="/check">Check my launch →</a><button type="button" aria-label="Dismiss" id="hello-x">×</button></div></div>
+<script>
+(() => {
+  const from = /^shipdesk$/i.test(new URLSearchParams(location.search).get('ref') || '') || /shipdesk\.dev/i.test(document.referrer);
+  let seen = false; try { seen = sessionStorage.getItem('hello-x') === '1'; } catch {}
+  if (!from || seen) return;
+  const el = document.getElementById('hello'); el.hidden = false;
+  document.getElementById('hello-x').onclick = () => { el.hidden = true; try { sessionStorage.setItem('hello-x', '1'); } catch {} };
+})();
+</script>
 
 <header class="nav" id="nav">
   <div class="wrap">

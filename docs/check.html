@@ -87,10 +87,25 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
 .more-cta{display:flex;gap:10px;flex-wrap:wrap}
 .more h3{font-weight:500;font-size:22px;letter-spacing:-.02em}
 .more p{color:var(--ink2);font-size:15px;max-width:36em}
-.what{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:48px 0 0}
+.what{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 0}
 .what div{border:1px solid var(--line);border-radius:14px;padding:14px;font-size:14px;color:var(--ink2);background:var(--surface)}
 .what b{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
-@media (max-width:640px){.top{grid-template-columns:1fr}.what{grid-template-columns:1fr}.hide-m{display:none}form{flex-direction:column}form .btn{width:100%}}
+.sample{display:grid;grid-template-columns:180px 1fr;gap:12px;margin:36px 0 0;text-align:left;border:1px solid var(--line);border-radius:18px;padding:10px;background:var(--surface);box-shadow:var(--shadow);transition:border-color .2s,transform .25s var(--ease)}
+.sample:hover{border-color:var(--line2);transform:translateY(-2px)}
+.s-score{background:var(--ink);color:#fff;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.s-score span{font:13px var(--mono);color:#b9bdd8}
+.s-score b{font-size:48px;font-weight:500;letter-spacing:-.04em;line-height:1}
+.s-score b small{font-size:16px;color:#8a8fae}
+.s-score em{font-style:normal;color:var(--lime);font-size:14px;font-weight:500}
+.s-list{padding:4px 6px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.s-cap{font:12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.s-list div{display:flex;gap:10px;align-items:center}
+.s-list i{font:500 11px var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.05em;border-radius:5px;padding:2px 0;width:40px;text-align:center;flex:none}
+.s-list .f{background:#fde8ec;color:#b3203b}.s-list .p{background:#e5f5ea;color:#11652f}
+.s-more{color:var(--blue);font-weight:500;margin-top:2px}
+.stat{font-size:14px;color:var(--ink2);margin-top:16px}
+.stat b{font-weight:500;color:var(--ink)}
+@media (max-width:640px){.top{grid-template-columns:1fr}.what{grid-template-columns:1fr}.sample{grid-template-columns:1fr}.hide-m{display:none}form{flex-direction:column}form .btn{width:100%}}
 @media (prefers-reduced-motion:reduce){.item,.load div{animation:none;opacity:1;transform:none}}
 </style>
 <script src="https://shipkit-stats.zionerkins.workers.dev/s.js" defer></script>
@@ -111,8 +126,23 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
       <input id="u" name="url" inputmode="url" autocomplete="url" placeholder="yourapp.com" aria-label="Website address" required>
       <button class="btn btn-lime" type="submit">Check my launch</button>
     </form>
-    <p class="fine">Looks at public pages only: your page, its share image and robots.txt. <a href="/check?url=info.cern.ch">See it run on the first website ever</a>.</p>
+    <p class="fine">Looks at public pages only: your page, its share image and robots.txt.</p>
     <p class="err" id="err" role="alert" hidden></p>
+    <div id="example">
+      <a class="sample" href="/check?url=info.cern.ch" aria-label="See the full example result for info.cern.ch">
+        <div class="s-score"><span>info.cern.ch</span><b>4<small>/100</small></b><em>4 launch blockers</em></div>
+        <div class="s-list">
+          <p class="s-cap">Example result · the first website ever</p>
+          <div><i class="f">fail</i>No share preview image</div>
+          <div><i class="f">fail</i>No price on the page</div>
+          <div><i class="f">fail</i>No way to try or buy it</div>
+          <div><i class="f">fail</i>Not set up for phones</div>
+          <div><i class="p">ok</i>AI search can read it</div>
+          <span class="s-more">See the full result, with every fix →</span>
+        </div>
+      </a>
+      <p class="stat">We ran it on 15 Show HN launches on Oct 30. <b>3 had no preview image set</b>, so they'd post to X as a blank link.</p>
+    </div>
     <div class="what" id="what">
       <div><b>Share preview</b>Does your link post as a big card, or a blank grey box?</div>
       <div><b>Price and a way in</b>Can a visitor see the price and try or buy it today?</div>
@@ -156,7 +186,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const steps = ['fetching the page…', 'reading share tags…', 'loading the preview image…', 'looking for a price and a way in…', 'reading robots.txt…'];
 
 async function run(url) {
-  $('#err').hidden = true; $('#result').hidden = true; $('#what').hidden = true;
+  $('#err').hidden = true; $('#result').hidden = true; $('#what').hidden = true; $('#example').hidden = true;
   const load = $('#load'); load.hidden = false; load.innerHTML = '';
   steps.forEach((s, i) => { const d = document.createElement('div'); d.textContent = '→ ' + s; d.style.animationDelay = i * 0.6 + 's'; load.append(d); });
   try {
@@ -167,7 +197,7 @@ async function run(url) {
     history.replaceState(null, '', '?url=' + encodeURIComponent(url));
   } catch (e) {
     $('#err').textContent = e.message === 'Failed to fetch' ? 'Could not reach the checker. Try again in a moment.' : e.message;
-    $('#err').hidden = false; $('#what').hidden = false;
+    $('#err').hidden = false; $('#what').hidden = false; $('#example').hidden = false;
   } finally { load.hidden = true; }
 }
 
@@ -183,14 +213,14 @@ function show(d) {
   $('#ptitle').textContent = d.title; $('#phost').textContent = d.host;
   $('#list').innerHTML = d.findings.map((x, i) => `<div class="item ${x.level}" style="animation-delay:${i * 60}ms"><span class="chip">${x.level === 'pass' ? 'ok' : x.level}</span><b>${esc(x.title)}</b><p>${esc(x.detail)}</p>${x.level !== 'pass' && x.fix ? `<p><code>${esc(x.fix)}</code></p>` : ''}</div>`).join('');
   const text = `My launch page scored ${d.score}/100 on Launch Check${fails ? ` (${fails} thing${fails > 1 ? 's' : ''} to fix)` : ''}.\n\nfree check here:`;
-  $('#tw').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://shipkit.tech/check');
+  $('#tw').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://shipkit.tech/check?url=' + d.host);
   $('#td').href = '/teardown?url=' + encodeURIComponent(d.host);
   $('#result').hidden = false;
   $('#result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 $('#f').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#u').value.trim(); if (v) run(v); else $('#u').focus(); });
-$('#again').addEventListener('click', () => { $('#result').hidden = true; $('#what').hidden = false; $('#u').value = ''; $('#u').focus(); scrollTo({ top: 0, behavior: 'smooth' }); });
+$('#again').addEventListener('click', () => { $('#result').hidden = true; $('#what').hidden = false; $('#example').hidden = false; $('#u').value = ''; $('#u').focus(); scrollTo({ top: 0, behavior: 'smooth' }); });
 const q = new URLSearchParams(location.search).get('url');
 if (q) { $('#u').value = q; run(q); }
 </script>

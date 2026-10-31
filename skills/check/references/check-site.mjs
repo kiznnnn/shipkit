@@ -64,11 +64,13 @@ async function follow(start) {
   return { chain, final: u, res: null, error: 'too many redirects' };
 }
 
+// Attributes may be unquoted in minified HTML (<meta name=viewport content=...>), so quotes are optional.
 function meta(html, key) {
-  const re = new RegExp(`<meta[^>]+(?:name|property)=["']${key}["'][^>]*>`, 'i');
+  const re = new RegExp(`<meta[^>]+(?:name|property)=["']?${key}["']?(?=[\\s/>])[^>]*>`, 'i');
   const tag = html.match(re)?.[0];
   if (!tag) return null;
-  return tag.match(/content=["']([^"']*)["']/i)?.[1] ?? '';
+  const m = tag.match(/content=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i);
+  return m ? (m[1] ?? m[2] ?? m[3]) : '';
 }
 function linkHref(html, rel) {
   const re = new RegExp(`<link[^>]+rel=["'][^"']*\\b${rel}\\b[^"']*["'][^>]*>`, 'i');
@@ -186,6 +188,14 @@ try {
   }
 
   out.analytics = Object.entries(ANALYTICS).filter(([, re]) => re.test(html)).map(([k]) => k);
+  if (!out.analytics.length) {
+    // Bundled apps (Next.js, Vite) keep analytics inside their own JavaScript, not the HTML.
+    const own = [...new Set([...html.matchAll(/<script[^>]+src=["']([^"']+)["']/gi)].map((m) => { try { return new URL(m[1], f.final); } catch { return null; } }).filter((u) => u && u.hostname === host).map((u) => u.href))].slice(0, 12);
+    const found = new Set();
+    await Promise.all(own.map(async (u) => { try { const r = await get(u); const js = r.body.slice(0, 1_500_000); for (const [k, re] of Object.entries(ANALYTICS)) if (re.test(js)) found.add(k); } catch { /* skip unreadable script */ } }));
+    out.analytics = [...found];
+    if (found.size) out.analyticsInBundle = true;
+  }
   out.payments = Object.entries(PAYMENTS).filter(([, re]) => re.test(html)).map(([k]) => k);
   const body = text(html);
   out.mentionsPrice = /[$€£]\s?\d|\d+\s?(USD|EUR)|\/\s?mo(nth)?\b|per month|one[- ]time|lifetime|free trial|free for \d+ days/i.test(body);
