@@ -16,7 +16,7 @@
 
 ## Launch Check (free web tool)
 
-https://shipkit.tech/check: paste a URL and get a 0–100 launch score in about 10 seconds. It checks the share preview image and X card, title and description, a visible price, a way to try or buy, noindex, robots.txt rules for search and AI bots, the phone viewport, analytics, a custom domain and a contact link, with a fix for each problem. No sign-up.
+[Launch Check](https://shipkit.tech/check): paste a URL and get a 0–100 launch score in about 10 seconds. It checks the share preview image and X card, title and description, a visible price, a way to try or buy, noindex, robots.txt rules for search and AI bots, the phone viewport, analytics, a custom domain and a contact link, with a fix for each problem. No sign-up.
 
 ## Price
 
@@ -28,7 +28,8 @@ Claude Code on any plan and Node 18 or newer. No other paid services.
 
 ## Links
 
-- Site: https://shipkit.tech/
-- Launch Check: https://shipkit.tech/check
-- Free plugin: https://github.com/kiznnnn/shipkit
-- Pro: https://zione8t.gumroad.com/l/shipkit
+- [Site](https://shipkit.tech/)
+- [Launch Check](https://shipkit.tech/check)
+- [Free plugin](https://github.com/kiznnnn/shipkit)
+- [Launch Teardown](https://shipkit.tech/teardown): a written teardown of your landing page in 12 hours, $19.
+- [Pro](https://zione8t.gumroad.com/l/shipkit)
