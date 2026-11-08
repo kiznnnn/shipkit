@@ -5,6 +5,7 @@
 // --fits   product types: any web saas mac ios android mobile cli devtool ai mcp claude-plugin open-source game
 // --kind   launch-site, directory, community, mcp-directory, skill-directory, mac-directory, subreddit
 // --tags   what the product is (marketing, content-generation, outreach...), used to raise rule warnings
+// --name   one or more places by id or name, e.g. --name r/SideProject,producthunt (case-insensitive)
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,12 +13,13 @@ import { fileURLToPath } from 'node:url';
 const here = dirname(fileURLToPath(import.meta.url));
 const db = JSON.parse(readFileSync(join(here, 'places.json'), 'utf8'));
 const arg = (name) => { const i = process.argv.indexOf('--' + name); return i > -1 ? (process.argv[i + 1] || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean) : []; };
-const fits = arg('fits'), kinds = arg('kind'), tags = arg('tags'), json = process.argv.includes('--json');
+const fits = arg('fits'), kinds = arg('kind'), tags = arg('tags'), names = arg('name').map((n) => n.replace(/^\/?r\//, 'r/')), json = process.argv.includes('--json');
 
 const today = new Date();
 const age = (d) => { const t = Date.parse(d.length === 7 ? d + '-01' : d); return Number.isNaN(t) ? null : Math.round((today - t) / 86400000); };
 
 const rows = db.places
+  .filter(p => !names.length || names.some(n => [p.id, p.name, p.name.replace(/^r\//, '')].map(x => String(x).toLowerCase()).includes(n) || String(p.name).toLowerCase() === n))
   .filter(p => !kinds.length || kinds.includes(p.kind))
   .filter(p => !fits.length || p.fits.includes('any') || p.fits.some(f => fits.includes(f)))
   .map(p => {

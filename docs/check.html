@@ -10,10 +10,10 @@
 <meta property="og:url" content="https://shipkit.tech/check">
 <meta property="og:title" content="Launch Check: is your page ready to launch?">
 <meta property="og:description" content="Paste your URL. In 10 seconds, see what quietly kills a launch. Free, no sign-up.">
-<meta property="og:image" content="https://shipkit.tech/og-check.png">
+<meta property="og:image" content="https://shipkit.tech/og-check.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Launch Check: a 63 out of 100 score with fail, warn and ok findings">
+<meta property="og:image:alt" content="Launch Check: an example 63 out of 100 score with Blocker, Fix and OK findings">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2f3cff">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -27,7 +27,7 @@
   --bg:#fbfbfd; --surface:#ffffff; --sunk:#f3f4f8;
   --ink:#0a0b1a; --ink2:#3c4058; --muted:#6b7089; --line:#e7e8ef; --line2:#d9dbe6;
   --blue:#2f3cff; --lime:#d8ff3d;
-  --red:#d92d4b; --amber:#b86e00; --green:#17803d;
+  --red:#d92d4b; --amber:#f0a531; --green:#17803d;
   --sans:"Geist",ui-sans-serif,system-ui,-apple-system,sans-serif;
   --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --ease:cubic-bezier(.16,1,.3,1); --spring:cubic-bezier(.34,1.56,.64,1);
@@ -62,12 +62,12 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
 .load div{opacity:0;animation:in .4s var(--ease) forwards}
 @keyframes in{to{opacity:1}}
 .result{padding:24px 0 40px}
-.top{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:stretch}
+.top{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:stretch}
 .score{background:var(--ink);color:#fff;border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
-.score b{font-size:64px;font-weight:500;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.score b small{font-size:20px;color:#8a8fae}
+.score b{font-size:84px;font-weight:600;letter-spacing:-.055em;line-height:1;font-variant-numeric:tabular-nums;color:var(--lime)}
+.score b small{font-size:26px;color:#5a5f7e;letter-spacing:-.03em}
 .score span{font-size:13px;color:#b9bdd8}
-.score .verdict{color:var(--lime);font-weight:500;font-size:15px}
+.score .verdict{color:#fff;font-weight:500;font-size:15px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
 .card h2{font:500 12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
 .preview{border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -77,8 +77,9 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
 .list{margin-top:20px;display:flex;flex-direction:column;gap:8px}
 .item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;opacity:0;transform:translateY(8px);animation:rise .5s var(--ease) forwards}
 @keyframes rise{to{opacity:1;transform:none}}
-.chip{grid-row:span 3;align-self:start;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;border-radius:6px;padding:3px 7px;margin-top:2px}
-.fail .chip{background:#fde8ec;color:var(--red)}.warn .chip{background:#fdf1dc;color:var(--amber)}.pass .chip{background:#e5f5ea;color:var(--green)}
+.chip{grid-row:span 3;align-self:start;font:600 12px/1 var(--sans);border-radius:999px;padding:5px 0;width:66px;text-align:center;margin-top:1px}
+/* Ship Kit verdicts: Blocker red with white text, Fix amber with ink text, OK lime with ink text */
+.fail .chip{background:var(--red);color:#fff}.warn .chip{background:var(--amber);color:var(--ink)}.pass .chip{background:var(--lime);color:var(--ink)}
 .item b{font-weight:500}
 .item p{font-size:14px;color:var(--ink2)}
 .item code{font:12.5px var(--mono);background:var(--sunk);border-radius:6px;padding:6px 8px;display:block;margin-top:6px;color:var(--ink);white-space:pre-wrap;word-break:break-word}
@@ -95,14 +96,14 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
 .sample:hover{border-color:var(--line2);transform:translateY(-2px)}
 .s-score{background:var(--ink);color:#fff;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
 .s-score span{font:13px var(--mono);color:#b9bdd8}
-.s-score b{font-size:48px;font-weight:500;letter-spacing:-.04em;line-height:1}
+.s-score b{font-size:56px;font-weight:600;letter-spacing:-.05em;line-height:1;color:var(--lime);font-variant-numeric:tabular-nums}
 .s-score b small{font-size:16px;color:#8a8fae}
-.s-score em{font-style:normal;color:var(--lime);font-size:14px;font-weight:500}
+.s-score em{font-style:normal;color:#fff;font-size:14px;font-weight:500}
 .s-list{padding:4px 6px;display:flex;flex-direction:column;gap:6px;font-size:14px}
 .s-cap{font:12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
 .s-list div{display:flex;gap:10px;align-items:center}
-.s-list i{font:500 11px var(--mono);font-style:normal;text-transform:uppercase;letter-spacing:.05em;border-radius:5px;padding:2px 0;width:40px;text-align:center;flex:none}
-.s-list .f{background:#fde8ec;color:#b3203b}.s-list .p{background:#e5f5ea;color:#11652f}
+.s-list i{font:600 11.5px/1 var(--sans);font-style:normal;border-radius:999px;padding:4px 0;width:58px;text-align:center;flex:none}
+.s-list .f{background:var(--red);color:#fff}.s-list .p{background:var(--lime);color:var(--ink)}
 .s-more{color:var(--blue);font-weight:500;margin-top:2px}
 .stat{font-size:14px;color:var(--ink2);margin-top:16px}
 .stat b{font-weight:500;color:var(--ink)}
@@ -113,7 +114,7 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
 </head>
 <body>
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2f3cff"/><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="#d8ff3d"/></svg>Ship Kit</a>
+  <a class="brand" href="/"><svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="230" fill="#2f3cff"/><g fill="#d8ff3d"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg>Ship Kit</a>
   <nav class="navlinks" aria-label="Main"><a class="hide-m" href="/">Ship Kit</a><a href="https://github.com/kiznnnn/shipkit">GitHub</a></nav>
 </div></header>
 
@@ -134,11 +135,11 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
         <div class="s-score"><span>info.cern.ch</span><b>4<small>/100</small></b><em>4 launch blockers</em></div>
         <div class="s-list">
           <p class="s-cap">Example result · the first website ever</p>
-          <div><i class="f">fail</i>No share preview image</div>
-          <div><i class="f">fail</i>No price on the page</div>
-          <div><i class="f">fail</i>No way to try or buy it</div>
-          <div><i class="f">fail</i>Not set up for phones</div>
-          <div><i class="p">ok</i>AI search can read it</div>
+          <div><i class="f">Blocker</i>No share preview image</div>
+          <div><i class="f">Blocker</i>No price on the page</div>
+          <div><i class="f">Blocker</i>No way to try or buy it</div>
+          <div><i class="f">Blocker</i>Not set up for phones</div>
+          <div><i class="p">OK</i>AI search can read it</div>
           <span class="s-more">See the full result, with every fix →</span>
         </div>
       </a>
@@ -163,6 +164,7 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
     <div class="list" id="list"></div>
     <div class="share">
       <a class="btn btn-ink" id="tw" target="_blank" rel="noopener">Share my score on X</a>
+      <button class="btn btn-line" id="card" type="button">Download my score card</button>
       <button class="btn btn-line" id="again" type="button">Check another page</button>
     </div>
     <div class="more" style="margin:28px 0 0">
@@ -172,18 +174,20 @@ input{flex:1;min-width:0;border:0;outline:0;background:none;padding:0 12px;font-
   </section>
 
   <section class="more">
-    <div><h3>Want the full pre-flight?</h3><p>Ship Kit's free <code>/shipkit:check</code> runs this and 30+ more checks from your repo inside Claude Code, then writes the fixes. Pro adds the launch posts, a dated run sheet and outreach, at the founding price while it lasts.</p></div>
+    <div><h3>Want the full pre-flight?</h3><p>Ship Kit's free <code>/shipkit:check</code> runs <a href="/#checks">24 checks</a> on your repo and page inside Claude Code, even before the page is live, and offers to fix what it finds. Pro writes the launch: posts in your voice, a dated run sheet and outreach, at the founding price while it lasts.</p></div>
     <div class="more-cta">
       <a class="btn btn-ink" href="https://github.com/kiznnnn/shipkit">Get it free on GitHub</a>
       <a class="btn btn-line" href="https://shipkit.tech/#pricing">See Pro</a>
     </div>
   </section>
 </main>
+<footer style="max-width:1200px;margin:0 auto;padding:40px 24px 56px;font-size:14px;color:#3c4058;display:flex;flex-wrap:wrap;gap:8px 20px"><span>© 2026 Ship Kit</span><a href="/" style="color:inherit">Home</a><a href="/check" style="color:inherit">Free launch check</a><a href="/privacy" style="color:inherit">Privacy</a><a href="/terms" style="color:inherit">Terms</a><a href="https://x.com/ZionE8T" style="color:inherit">Contact: @ZionE8T</a></footer>
 
 <script>
 const API = /^(localhost|127\.)/.test(location.hostname) ? 'http://localhost:8787' : 'https://shipkit-check.zionerkins.workers.dev';
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LABEL = { fail: 'Blocker', warn: 'Fix', pass: 'OK' };
 const steps = ['fetching the page…', 'reading share tags…', 'loading the preview image…', 'looking for a price and a way in…', 'reading robots.txt…'];
 
 async function run(url) {
@@ -203,6 +207,7 @@ async function run(url) {
 }
 
 function show(d) {
+  LAST = d;
   const fails = d.findings.filter((x) => x.level === 'fail').length;
   $('#host').textContent = d.host;
   $('#verdict').textContent = fails ? `${fails} launch blocker${fails > 1 ? 's' : ''}` : d.score >= 90 ? 'Ready to launch' : 'Close. Fix the warnings';
@@ -212,13 +217,46 @@ function show(d) {
   const img = $('#pimg');
   if (d.image) { img.style.backgroundImage = `url("${encodeURI(d.image)}")`; img.textContent = ''; } else { img.style.backgroundImage = ''; img.textContent = 'No preview image: a blank card'; }
   $('#ptitle').textContent = d.title; $('#phost').textContent = d.host;
-  $('#list').innerHTML = d.findings.map((x, i) => `<div class="item ${x.level}" style="animation-delay:${i * 60}ms"><span class="chip">${x.level === 'pass' ? 'ok' : x.level}</span><b>${esc(x.title)}</b><p>${esc(x.detail)}</p>${x.level !== 'pass' && x.fix ? `<p><code>${esc(x.fix)}</code></p>` : ''}</div>`).join('');
-  const text = `My launch page scored ${d.score}/100 on Launch Check${fails ? ` (${fails} thing${fails > 1 ? 's' : ''} to fix)` : ''}.\n\nfree check here:`;
+  $('#list').innerHTML = d.findings.map((x, i) => `<div class="item ${x.level}" style="animation-delay:${i * 60}ms"><span class="chip">${LABEL[x.level]}</span><b>${esc(x.title)}</b><p>${esc(x.detail)}</p>${x.level !== 'pass' && x.fix ? `<p><code>${esc(x.fix)}</code></p>` : ''}</div>`).join('');
+  const text = `My launch page scored ${d.score}/100 on Launch Check${fails ? ` (${fails} blocker${fails > 1 ? 's' : ''} to fix)` : ''}.\n\nfree check here:`;
   $('#tw').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent('https://shipkit.tech/check?url=' + d.host);
   $('#td').href = '/teardown?url=' + encodeURIComponent(d.host);
   $('#result').hidden = false;
   $('#result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+
+// the score card for this run: 1200×630, drawn here from this result only, so it can go with the post
+const SAIL = ['M548 196C650 300 742 470 776 640H548Z', 'M500 300C430 400 352 520 318 640H500Z', 'M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z'];
+let LAST = null;
+function rr(x, px, py, w, h, r) { x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + w, py, px + w, py + h, r); x.arcTo(px + w, py + h, px, py + h, r); x.arcTo(px, py + h, px, py, r); x.arcTo(px, py, px + w, py, r); x.closePath(); }
+function scoreCard(d) {
+  const c = document.createElement('canvas'); c.width = 1200; c.height = 630; const x = c.getContext('2d');
+  const F = (w, px, fam = 'Geist, system-ui, sans-serif') => `${w} ${px}px ${fam}`;
+  x.fillStyle = '#0a0b1a'; x.fillRect(0, 0, 1200, 630);
+  x.save(); x.translate(64, 56); x.scale(56 / 1024, 56 / 1024); x.fillStyle = '#2f3cff'; rr(x, 0, 0, 1024, 1024, 230); x.fill(); x.fillStyle = '#d8ff3d'; SAIL.forEach(p => x.fill(new Path2D(p))); x.restore();
+  x.fillStyle = '#fff'; x.font = F(600, 32); x.textBaseline = 'alphabetic'; x.fillText('My launch check', 138, 95);
+  x.textAlign = 'right'; x.fillStyle = '#9aa0bd'; x.font = F(400, 24, '"Geist Mono", ui-monospace, monospace'); x.fillText(new Date().toISOString().slice(0, 10), 1136, 95);
+  x.textAlign = 'left'; x.font = F(600, 220); x.fillStyle = '#d8ff3d'; const sc = String(d.score); x.fillText(sc, 54, 372);
+  const sw = x.measureText(sc).width; x.fillStyle = '#3c4058'; x.font = F(600, 110); x.fillText('/100', 54 + sw + 6, 372);
+  const fails = d.findings.filter(f => f.level === 'fail').length, warns = d.findings.filter(f => f.level === 'warn').length;
+  x.textAlign = 'right'; x.fillStyle = '#fff'; x.font = F(600, 40); let host = d.host; while (x.measureText(host).width > 420 && host.length > 4) host = host.slice(0, -2) + '…'; x.fillText(host, 1136, 300);
+  x.fillStyle = '#9aa0bd'; x.font = F(400, 26); x.fillText([fails ? `${fails} blocker${fails > 1 ? 's' : ''}` : 'no blockers', warns ? `${warns} to fix` : null].filter(Boolean).join(', '), 1136, 344);
+  x.textAlign = 'left';
+  d.findings.slice(0, 2).forEach((f, i) => {
+    const y = 486 + i * 56, lab = LABEL[f.level], w = f.level === 'fail' ? 104 : f.level === 'warn' ? 56 : 54;
+    x.fillStyle = f.level === 'fail' ? '#d92d4b' : f.level === 'warn' ? '#f0a531' : '#d8ff3d'; rr(x, 64, y - 27, w, 36, 18); x.fill();
+    x.fillStyle = f.level === 'fail' ? '#fff' : '#0a0b1a'; x.font = F(600, 20); x.textAlign = 'center'; x.fillText(lab, 64 + w / 2, y - 3);
+    x.textAlign = 'left'; x.fillStyle = '#e7e8ef'; x.font = F(400, 28); let t = f.title; while (x.measureText(t).width > 960 - w && t.length > 4) t = t.slice(0, -2) + '…'; x.fillText(t, 64 + w + 16, y);
+  });
+  x.textAlign = 'right'; x.fillStyle = '#9aa0bd'; x.font = F(400, 22, '"Geist Mono", ui-monospace, monospace'); x.fillText('free check at shipkit.tech/check', 1136, 590);
+  return c;
+}
+$('#card').addEventListener('click', async () => {
+  if (!LAST) return;
+  try { await document.fonts.ready; } catch {}
+  scoreCard(LAST).toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = `launch-check-${LAST.host}.png`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }, 'image/png');
+});
 
 $('#f').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#u').value.trim(); if (v) run(v); else $('#u').focus(); });
 $('#again').addEventListener('click', () => { $('#result').hidden = true; $('#what').hidden = false; $('#example').hidden = false; $('#u').value = ''; $('#u').focus(); scrollTo({ top: 0, behavior: 'smooth' }); });

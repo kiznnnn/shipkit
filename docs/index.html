@@ -3,14 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ship Kit: the Claude Code plugin that runs your launch</title>
-<meta name="description" content="A Claude Code plugin that reads your repo and writes your launch: a pre-flight check, a landing page, posts in your voice, a dated run sheet and weekly SEO.">
+<title>Ship Kit: the launch check for Claude Code</title>
+<meta name="description" content="The launch check for Claude Code. 24 checks on your repo and page, live or local, with the file and line for each fix. Pro writes the posts.">
 <link rel="canonical" href="https://shipkit.tech/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shipkit.tech/">
-<meta property="og:title" content="Ship Kit: Claude Code runs your launch">
-<meta property="og:description" content="Reads your repo, checks your live site, and writes the whole launch. You review, you post. Free version on GitHub.">
-<meta property="og:image" content="https://shipkit.tech/og.png">
+<meta property="og:title" content="Ship Kit: find what will sink your launch">
+<meta property="og:description" content="A free 24-point launch check for Claude Code, OG image size included, that works before your page is live. Pro writes the posts and the plan.">
+<meta property="og:image" content="https://shipkit.tech/og.png?v=6">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ship Kit: find what will sink your launch. An example launch check report: 21 of 24, with one blocker, one fix and one OK.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2f3cff">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -18,19 +21,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://shipkit.tech/#org","name":"Ship Kit","url":"https://shipkit.tech/","logo":"https://shipkit.tech/apple-touch-icon.png","sameAs":["https://github.com/kiznnnn/shipkit"]},{"@type":"WebSite","@id":"https://shipkit.tech/#site","name":"Ship Kit","url":"https://shipkit.tech/","publisher":{"@id":"https://shipkit.tech/#org"}},{"@type":"SoftwareApplication","@id":"https://shipkit.tech/#app","name":"Ship Kit","description":"A Claude Code plugin that runs an indie launch: a pre-flight check of your repo and live site, a landing page, posts in your voice checked against each platform's rules, a dated run sheet and a results recap.","url":"https://shipkit.tech/","image":"https://shipkit.tech/og.png","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Windows, Linux (Claude Code)","publisher":{"@id":"https://shipkit.tech/#org"},"offers":[{"@type":"Offer","name":"Free edition","price":"0","priceCurrency":"USD","url":"https://github.com/kiznnnn/shipkit"},{"@type":"Offer","name":"Pro, founding copy (No. 1–25)","price":"9","priceCurrency":"USD","url":"https://zione8t.gumroad.com/l/shipkit"},{"@type":"Offer","name":"Studio, 5 seats","price":"69","priceCurrency":"USD","url":"https://zione8t.gumroad.com/l/shipkit"}]},{"@type":"FAQPage","@id":"https://shipkit.tech/#faq","mainEntity":[{"@type":"Question","name":"Does it post for me?","acceptedAnswer":{"@type":"Answer","text":"No. It never posts, sends, submits, deploys or signs up for anything. It writes files in .shipkit/ and you post from your own accounts. That keeps your accounts safe and the posts yours."}},{"@type":"Question","name":"Will it make things up?","acceptedAnswer":{"@type":"Answer","text":"It's built not to. Every fact goes into .shipkit/product.md with its source, and pages and posts may only use those facts. Anything missing, like a quote or a number, becomes a [needs: …] slot for you."}},{"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Claude Code on any plan, and Node 18 or newer. The scripts have no dependencies and only use free public sources. There's nothing else to pay for."}},{"@type":"Question","name":"Will Reddit remove an AI-written post?","acceptedAnswer":{"@type":"Answer","text":"Some subreddits will: many now remove AI-written posts, and a few ban promoting content tools at all. Ship Kit tells you which ones, from rules it dates and re-checks. It never tries to make AI text pass as yours. It drafts, then asks you to put it in your own words where a community requires it."}},{"@type":"Question","name":"Is it only for Mac apps?","acceptedAnswer":{"@type":"Answer","text":"No. It was tested on a Mac app first, but it works on any repo: web apps, SaaS, CLIs, libraries, plugins and mobile apps."}},{"@type":"Question","name":"Why not use a free skill pack?","acceptedAnswer":{"@type":"Answer","text":"Use them; they're good libraries of frameworks. Ship Kit is narrower. It looks at your actual repo and live site, follows each platform's current rules, and hands you a finished, dated launch."}},{"@type":"Question","name":"How does the price ladder work?","acceptedAnswer":{"@type":"Answer","text":"Copies 1 to 25 are $9. Copies 26 to 75 are $19. After that it's $29. The counter on this page shows where it stands."}},{"@type":"Question","name":"Can I use it for clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pro covers every product you make, client work included. If several people on a team use it, Studio covers five."}},{"@type":"Question","name":"What if it's not for me?","acceptedAnswer":{"@type":"Answer","text":"Reply to your Gumroad receipt within 14 days for a full refund. No questions."}}]}]}</script>
-<!-- Analytics: paste one free script here (GoatCounter, Cloudflare Web Analytics or Umami). -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://shipkit.tech/#org","name":"Ship Kit","url":"https://shipkit.tech/","logo":"https://shipkit.tech/apple-touch-icon.png","sameAs":["https://github.com/kiznnnn/shipkit"]},{"@type":"WebSite","@id":"https://shipkit.tech/#site","name":"Ship Kit","url":"https://shipkit.tech/","publisher":{"@id":"https://shipkit.tech/#org"}},{"@type":"SoftwareApplication","@id":"https://shipkit.tech/#app","name":"Ship Kit","description":"The launch check for Claude Code. A 24-point pre-flight of your repo and landing page (live or local) that finds what will hurt your launch, with the file and line for each fix. Pro writes the launch: posts in your voice checked against each platform's rules, outreach messages, a dated run sheet and a results recap.","url":"https://shipkit.tech/","image":"https://shipkit.tech/og.png?v=6","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Windows, Linux (Claude Code)","publisher":{"@id":"https://shipkit.tech/#org"},"offers":[{"@type":"Offer","name":"Free edition","price":"0","priceCurrency":"USD","url":"https://github.com/kiznnnn/shipkit"},{"@type":"Offer","name":"Ship Kit Pro","price":"9","priceCurrency":"USD","url":"https://zione8t.gumroad.com/l/shipkit"},{"@type":"Offer","name":"Studio, 5 seats","price":"69","priceCurrency":"USD","url":"https://zione8t.gumroad.com/l/shipkit"}]},{"@type":"FAQPage","@id":"https://shipkit.tech/#faq","mainEntity":[{"@type":"Question","name":"Does my page have to be live?","acceptedAnswer":{"@type":"Answer","text":"No. Point /shipkit:check at the folder or HTML file and it reads the page from disk, share image included. It also checks a live URL, and both when you have both."}},{"@type":"Question","name":"Will it make things up?","acceptedAnswer":{"@type":"Answer","text":"It's built not to. Every fact goes into .shipkit/product.md with its source, and pages and posts may only use those facts. Anything missing, like a quote or a number, becomes a [needs: …] slot for you."}},{"@type":"Question","name":"Does it work on a private repo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ship Kit has no server. It runs inside your own Claude Code session, and the check only sends GET requests to your own public site, or none at all when it reads local files."}},{"@type":"Question","name":"Why not just ask Claude Code?","acceptedAnswer":{"@type":"Answer","text":"You can, and Ship Kit runs inside it. What it adds is what a prompt doesn't have: a probe that fetches your page and opens the share image to measure its real type, size and weight; a 24-item checklist built from a real launch; a linter for AI tells that runs as code; a separate critic agent that scores each post as that platform's crowd; and dated rules for each subreddit and platform."}},{"@type":"Question","name":"What does the check look at?","acceptedAnswer":{"@type":"Answer","text":"24 items in seven groups: trust, the first five seconds (including the share preview and its image), the offer, measurement, distribution, findability and launch week. The report lists every one with its verdict and evidence."}},{"@type":"Question","name":"Does it post for me?","acceptedAnswer":{"@type":"Answer","text":"No. It never posts, sends, submits, deploys or signs up for anything. It writes files in .shipkit/ and you post from your own accounts. That keeps your accounts safe and the posts yours."}},{"@type":"Question","name":"Does it submit to directories for me?","acceptedAnswer":{"@type":"Answer","text":"No. Pro writes each directory's copy at the right length, with the character counts, and a dated list of where to submit, with each submit link and its cost. You submit from your own accounts."}},{"@type":"Question","name":"What do I need?","acceptedAnswer":{"@type":"Answer","text":"Claude Code on any plan, and Node 18 or newer. The scripts have no dependencies and only use free public sources. There's nothing else to pay for."}},{"@type":"Question","name":"Will Reddit remove an AI-written post?","acceptedAnswer":{"@type":"Answer","text":"Some subreddits will: many now remove AI-written posts, and a few ban promoting content tools at all. Ship Kit tells you which ones, from rules it dates and re-checks. It never tries to make AI text pass as yours. It drafts, then asks you to put it in your own words where a community requires it."}},{"@type":"Question","name":"Is it only for Mac apps?","acceptedAnswer":{"@type":"Answer","text":"No. It was tested on a Mac app first, but it works on any repo: web apps, SaaS, CLIs, libraries, plugins and mobile apps."}},{"@type":"Question","name":"Why not use a free skill pack?","acceptedAnswer":{"@type":"Answer","text":"Use them; they're good libraries of frameworks. Ship Kit is narrower. It looks at your actual repo and live site, follows each platform's current rules, and hands you a finished, dated launch."}},{"@type":"Question","name":"How does the price ladder work?","acceptedAnswer":{"@type":"Answer","text":"Copies 1 to 25 are $9. Copies 26 to 75 are $19. After that it's $29. Once copies sell, this page shows how many are left at each price."}},{"@type":"Question","name":"What does Pro do that the free version doesn't?","acceptedAnswer":{"@type":"Answer","text":"The free version finds the problems and checks your drafts. Pro writes the launch: posts for X, Reddit, Show HN and Product Hunt in your voice, a dated run sheet and launch kit, 20 real people to message, a morning brief that watches your live site in launch week, a weekly SEO page and a results recap."}},{"@type":"Question","name":"Can I use it for clients?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pro covers every product you make, client work included. If several people on a team use it, Studio covers five."}},{"@type":"Question","name":"What if it's not for me?","acceptedAnswer":{"@type":"Answer","text":"Reply to your Gumroad receipt within 14 days for a full refund. No questions."}}]}]}</script>
 <style>
 :root{
   --bg:#fbfbfd; --surface:#ffffff; --sunk:#f3f4f8;
   --ink:#0a0b1a; --ink2:#3c4058; --muted:#6b7089; --line:#e7e8ef; --line2:#d9dbe6;
   --blue:#2f3cff; --blue-d:#2230e0; --blue-ink:#1b25b8; --lime:#d8ff3d; --lime-d:#c2ec1f;
-  --red:#d92d4b; --amber:#b86e00; --green:#17803d;
+  --red:#d92d4b; --amber:#f0a531; --amber-ink:#8a5200; --green:#17803d;
   --term:#0d0f1c; --term2:#151829; --tline:#262a40;
   --sans:"Geist",ui-sans-serif,system-ui,-apple-system,sans-serif;
   --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --r:20px; --ease:cubic-bezier(.16,1,.3,1); --spring:cubic-bezier(.34,1.56,.64,1); --shadow:0 1px 2px rgba(10,11,26,.04),0 8px 24px -8px rgba(10,11,26,.10);
-  --shadow-l:0 2px 4px rgba(10,11,26,.04),0 24px 64px -16px rgba(10,11,26,.22);
+  --r:20px; --ease:cubic-bezier(.16,1,.3,1); --spring:cubic-bezier(.34,1.56,.64,1); --shadow:none;
+  --shadow-l:none;
 }
 *{box-sizing:border-box;margin:0}
 [hidden]{display:none!important}
@@ -56,38 +58,47 @@ code,kbd,.mono{font-family:var(--mono)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;font-weight:500;font-size:15px;letter-spacing:-.005em;white-space:nowrap;transition:background .2s,transform .25s var(--spring),box-shadow .2s,border-color .2s}
 .btn-sm{height:36px;padding:0 14px;border-radius:10px;font-size:14px}
 .btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#1d2036}
-.btn-lime{background:var(--lime);color:var(--ink);box-shadow:inset 0 -1px 0 rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.08)}.btn-lime:hover{background:#e3ff6b}
+.btn-lime{background:var(--lime);color:var(--ink)}.btn-lime:hover{background:#e3ff6b}
 .btn-ghost-w{color:#fff;border:1px solid rgba(255,255,255,.32)}.btn-ghost-w:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
 .btn-line{border:1px solid var(--line2);background:var(--surface);color:var(--ink)}.btn-line:hover{border-color:#b9bccb}
 .btn svg{width:16px;height:16px}
 
 /* hero */
-.hero{position:relative;margin-top:8px;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;
-  background:radial-gradient(120% 90% at 12% 0%,#5560ff 0%,rgba(85,96,255,0) 55%),radial-gradient(90% 70% at 100% 100%,#1c25c9 0%,rgba(28,37,201,0) 60%),var(--blue)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.35;mix-blend-mode:overlay;pointer-events:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.55'/></svg>")}
-.hero-in{padding:88px 64px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero{position:relative;margin-top:8px;border-radius:32px;overflow:hidden;color:#fff;isolation:isolate;background:var(--blue)}
+.hero-in{padding:48px 64px 0;text-align:center;display:flex;flex-direction:column;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px 0 6px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:13px;color:#eef0ff}
 .pill b{font-weight:500;background:var(--lime);color:var(--ink);border-radius:999px;padding:2px 8px;font-size:12px}
-h1{text-wrap:balance;font-weight:500;font-size:clamp(44px,7.2vw,92px);line-height:.98;letter-spacing:-.045em;margin:26px 0 22px;max-width:12ch}
+h1{text-wrap:balance;font-weight:500;font-size:clamp(42px,5.6vw,80px);line-height:.98;letter-spacing:-.045em;margin:0 0 20px;max-width:15ch}
 h1 em{font-style:normal;color:var(--lime)}
-.lede{font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#dfe2ff;max-width:36em}
-.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.lede{font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:#fff;max-width:44em;text-wrap:pretty}
+/* the live thing: check any page from the hero */
+.urlcheck{display:flex;gap:8px;width:100%;max-width:560px;margin:24px auto 0;padding:6px;border-radius:16px;background:#fff}
+.urlcheck input{flex:1;min-width:0;height:48px;border:0;border-radius:11px;padding:0 14px;font:16px var(--sans);color:var(--ink);background:transparent}
+.urlcheck input:focus{outline:none}
+.urlcheck:focus-within{box-shadow:0 0 0 3px var(--lime)}
+.urlcheck .btn{height:48px;border-radius:11px}
+.under{margin-top:10px;font-size:14px;color:#e8eaff}
+.under a{text-decoration:underline;text-underline-offset:3px}
+.req{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-top:22px;font-size:14.5px;color:var(--ink2)}
+.req span{display:inline-flex;align-items:center;gap:7px}
+.req span::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--blue)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:20px}
+.cta .install{margin-top:0;height:44px}
 .install{margin-top:22px;display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 6px 0 14px;border-radius:12px;background:rgba(10,11,26,.28);border:1px solid rgba(255,255,255,.14);font:13.5px var(--mono);color:#e8eaff;max-width:100%}
 .install span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .install .p{color:var(--lime)}
 .copy{height:28px;padding:0 10px;border-radius:8px;background:rgba(255,255,255,.1);font:500 12px var(--sans);color:#fff;flex:none}
 .copy:hover{background:rgba(255,255,255,.18)}
-.fine{margin-top:14px;font-size:13px;color:#e4e6ff}
+.fine{margin-top:12px;font-size:14px;color:#eef0ff}
 
 /* terminal */
-.stage{width:100%;max-width:960px;margin:56px auto 0;position:relative;transform:translateY(1px)}
-.term{background:var(--term);border:1px solid rgba(255,255,255,.08);border-bottom:0;border-radius:18px 18px 0 0;box-shadow:0 -30px 80px -30px rgba(5,8,60,.6);text-align:left;overflow:hidden}
+.stage{width:100%;max-width:960px;margin:28px auto 0;position:relative;transform:translateY(1px)}
+.term{background:var(--term);border:1px solid rgba(255,255,255,.08);border-bottom:0;border-radius:18px 18px 0 0;text-align:left;overflow:hidden}
 .term-bar{display:flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-bottom:1px solid var(--tline);color:#8a8fae;font:12.5px var(--mono)}
 .dots{display:flex;gap:7px;margin-right:8px}.dots i{width:11px;height:11px;border-radius:50%;background:#2d3149}
 .term-bar .t{flex:1;text-align:center;margin-right:52px}
 .term-body{font:13.5px/1.75 var(--mono);color:#c9cde6;padding:22px 24px 26px;min-height:380px;white-space:pre-wrap;word-break:break-word}
-.term-body .c{color:#7d82a3}.term-body .g{color:#7ee787}.term-body .r{color:#ff8a9a}.term-body .y{color:#ffd479}.term-body .w{color:#fff}.term-body .l{color:var(--lime)}.term-body .b{color:#9ba3ff}
+.term-body .c{color:#7d82a3}.term-body .g{color:var(--lime)}.term-body .r{color:#ff6b81}.term-body .y{color:var(--amber)}.term-body .w{color:#fff}.term-body .l{color:var(--lime)}.term-body .b{color:#9ba3ff}
 .caret{display:inline-block;width:8px;height:16px;background:var(--lime);vertical-align:-3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .replay{position:absolute;right:14px;top:9px;height:26px;padding:0 10px;border-radius:8px;font:500 12px var(--sans);color:#aab0d6;border:1px solid var(--tline)}
@@ -96,7 +107,7 @@ h1 em{font-style:normal;color:var(--lime)}
 /* sections */
 section{padding:136px 0 0;scroll-margin-top:72px}
 #f-stage{scroll-margin-top:96px}
-.fig{display:flex;align-items:center;gap:10px;font:12px var(--mono);color:var(--muted);letter-spacing:.02em;text-transform:uppercase}
+.fig{display:none}
 .fig::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--blue)}
 h2{text-wrap:balance;font-weight:500;font-size:clamp(32px,4.4vw,54px);line-height:1.04;letter-spacing:-.04em;margin-top:18px;max-width:20ch}
 .two{font-weight:500;font-size:clamp(24px,2.8vw,36px);line-height:1.18;letter-spacing:-.03em;max-width:30ch;margin-top:18px}
@@ -114,13 +125,13 @@ h2{text-wrap:balance;font-weight:500;font-size:clamp(32px,4.4vw,54px);line-heigh
 .score{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
 .score b{font-weight:500;font-size:64px;line-height:1;letter-spacing:-.05em;color:var(--ink)}
 .score span{font:13px var(--mono);color:var(--muted)}
-.meter{display:flex;gap:4px;margin-bottom:22px}.meter i{height:6px;flex:1;border-radius:3px;background:var(--sunk)}.meter i.ok{background:var(--blue)}.meter i.bad{background:var(--red)}
+.meter{display:flex;gap:4px;margin-bottom:22px}.meter i{height:6px;flex:1;border-radius:3px;background:var(--sunk)}.meter i.ok{background:var(--lime);box-shadow:inset 0 0 0 1px rgba(10,11,26,.08)}.meter i.fix{background:var(--amber)}.meter i.bad{background:var(--red)}
 .items{list-style:none;padding:0;display:grid;gap:12px}
 .items li{display:grid;grid-template-columns:22px 1fr;gap:10px;line-height:1.5}
 .tag{font:500 11px var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:6px;display:inline-block;margin-bottom:6px}
-.tag.bad{background:#fde8ec;color:var(--red)}.tag.fix{background:#fff3dc;color:var(--amber)}.tag.ok{background:#e6f6ec;color:var(--green)}
+.tag.bad{background:var(--red);color:#fff}.tag.fix{background:var(--amber);color:var(--ink)}.tag.ok{background:var(--lime);color:var(--ink)}
 .ic{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font:600 12px var(--mono);margin-top:1px}
-.ic.bad{background:#fde8ec;color:var(--red)}.ic.ok{background:#e6f6ec;color:var(--green)}.ic.fix{background:#fff3dc;color:var(--amber)}
+.ic.bad{background:var(--red);color:#fff}.ic.ok{background:var(--lime);color:var(--ink)}.ic.fix{background:var(--amber);color:var(--ink)}
 .items b{color:var(--ink);font-weight:500}
 .catches{display:grid;gap:14px}
 .catch{padding:22px 24px}
@@ -164,7 +175,7 @@ h2{text-wrap:balance;font-weight:500;font-size:clamp(32px,4.4vw,54px);line-heigh
 .hits mark{background:#fde8ec;color:var(--red);border-radius:4px;padding:0 4px}
 .hits .ok{color:var(--green)}
 .badge{font:500 12px var(--mono);padding:3px 9px;border-radius:999px}
-.badge.bad{background:#fde8ec;color:var(--red)}.badge.ok{background:#e6f6ec;color:var(--green)}
+.badge.bad{background:var(--red);color:#fff}.badge.ok{background:var(--lime);color:var(--ink)}
 .good-b{padding:20px 22px;font-size:16px;line-height:1.65;color:var(--ink);white-space:pre-wrap;flex:1}
 .good-f{border-top:1px solid var(--line);padding:16px 22px 20px;font-size:13.5px;color:var(--muted)}
 
@@ -258,7 +269,7 @@ td .y{color:var(--blue-ink);font-weight:600}.td-no{color:var(--muted)}
 .plan .when{font-size:14px;color:var(--muted);margin-top:6px}
 .plan ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:10px;flex:1;align-content:start;font-size:15px;color:var(--ink2)}
 .plan li{display:grid;grid-template-columns:20px 1fr;gap:8px}
-.plan li::before{content:"";width:16px;height:16px;margin-top:3px;border-radius:50%;background:#e6f6ec url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%2317803d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/16px no-repeat}
+.plan li::before{content:"";width:16px;height:16px;margin-top:3px;border-radius:50%;background:var(--lime) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%230a0b1a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/16px no-repeat}
 .plan.pro{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:var(--shadow-l)}
 .plan.pro .name{color:#9ba0c4}.plan.pro .when{color:#b7bbd9}.plan.pro ul{color:#dfe1f2}
 .plan.pro li::before{background-color:rgba(216,255,61,.16);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23d8ff3d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>")}
@@ -344,10 +355,10 @@ footer a:hover{color:var(--ink)}
 .stat b{display:block;font-weight:500;font-size:clamp(34px,3.6vw,48px);letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
 .stat span{display:block;margin-top:10px;font-size:14.5px;color:var(--muted)}
 .marquee{margin-top:28px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.marquee .lbl{font:12px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;text-align:center;margin-bottom:14px}
+.marquee .lbl{font:15px var(--sans);color:var(--ink2);text-align:center;margin-bottom:14px}
 .track{display:flex;gap:48px;width:max-content;animation:mq 38s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
-.track span{font-weight:500;font-size:22px;letter-spacing:-.02em;color:#9a9eb3;white-space:nowrap;display:flex;align-items:center;gap:48px}
+.track span{font-weight:500;font-size:22px;letter-spacing:-.02em;color:#5d6178;white-space:nowrap;display:flex;align-items:center;gap:48px}
 .track span::after{content:"";width:6px;height:6px;border-radius:2px;background:var(--line2)}
 @keyframes mq{to{transform:translateX(-50%)}}
 
@@ -397,6 +408,7 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 .f-count .left{display:flex;align-items:baseline;gap:10px;margin-top:8px}
 .f-count .left b{font-weight:500;font-size:72px;line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
 .f-count .left span{color:var(--muted);font-size:15px}
+.f-count .left b{white-space:nowrap}.f-count .left{flex-wrap:wrap;margin-bottom:18px}
 .f-count .bar{margin:16px 0 20px}
 .f-count .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .perks{list-style:none;padding:6px 0;margin:0;display:grid}
@@ -646,6 +658,103 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
   .pane-b h3{font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){.mini .holo{transition:none}.term-body .tl,.hk{transition:none;opacity:1;transform:none}.launch .flame{animation:none}.split .w>span,.meter i,.items li,tbody tr,.mini,.cmd code{transition:none!important;transform:none!important;opacity:1!important;filter:none!important;clip-path:none!important}.track{animation:none}.mini.next::after,.foot-left::before{animation:none}html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.caret{animation:none}.bar i{transition:none}}
+
+/* what it checks */
+.checks > *{min-width:0}
+.checks{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;margin-top:48px;align-items:start}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}
+.group h3{font-weight:600;font-size:17px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:8px}
+.group h3 small{font-weight:500;font-size:14px;color:var(--blue)}
+.group ul{list-style:none;padding:0;margin-top:8px;display:grid;gap:5px}
+.group li{font-size:16px;line-height:1.45;color:var(--ink)}
+.group li.hot{font-weight:600}
+.group li.hot::after{content:" · the one people miss";font-weight:400;color:var(--blue)}
+.ogcard{background:var(--term);color:#c9cde6;border-radius:20px;padding:28px 28px 26px;position:sticky;top:96px}
+.ogcard h3{color:#fff;font-weight:500;font-size:22px;letter-spacing:-.02em;line-height:1.25}
+.ogcard p{margin-top:10px;font-size:16px;color:#c9cde6}
+.ogcard pre{margin-top:18px;font:13px/1.7 var(--mono);white-space:pre-wrap;color:#c9cde6;background:var(--term2);border-radius:12px;padding:16px 18px}
+.ogcard pre .g{color:var(--lime)}.ogcard pre .r{color:#ff6b81}.ogcard pre .y{color:var(--amber)}.ogcard pre .w{color:#fff}.ogcard pre .c{color:#8a8fae}
+.demo{margin-top:16px}.demo video{display:block;width:100%;height:auto;border-radius:12px;background:var(--blue)}.demo figcaption{margin-top:8px;font:12.5px var(--mono);color:#8a8fae}
+.linkcard{margin-top:16px;border-radius:14px;overflow:hidden;background:var(--term2)}
+.linkcard img{display:block;width:100%;height:auto}
+.linkcard figcaption{padding:12px 16px 14px;display:grid;gap:2px}
+.linkcard span{font-size:13px;color:#8a8fae}
+.linkcard b{font-weight:500;color:#fff;font-size:15px}
+.asks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.ask{background:var(--sunk);border-radius:20px;padding:26px 26px 28px}
+.ask h3{font-weight:600;font-size:19px;letter-spacing:-.02em;line-height:1.3}
+.ask h3 b{color:var(--blue);font-weight:600}
+.ask p{margin-top:10px;font-size:16px;color:var(--ink2)}
+.ask code{font-size:14px}
+/* free and pro */
+.tiers{display:grid;grid-template-columns:1fr 1.35fr;gap:16px;margin-top:48px}
+.tierbox{border-radius:24px;padding:32px;min-width:0}
+.tierbox.free{background:var(--sunk)}
+.tierbox.pro{background:var(--ink);color:#fff}
+.tierbox > h3{font-weight:500;font-size:clamp(24px,2.4vw,30px);letter-spacing:-.03em;line-height:1.15}
+.tierbox > p{margin-top:10px;font-size:16px;color:var(--ink2);max-width:36em}
+.tierbox.pro > p{color:#c9cde6}
+.tierbox ul{list-style:none;padding:0;margin-top:22px;display:grid;gap:16px}
+.tierbox li{display:grid;grid-template-columns:170px 1fr;gap:16px;align-items:baseline}
+.tierbox li code{font:500 15px var(--mono)}
+.tierbox.free li{grid-template-columns:1fr;gap:4px}
+.tierbox.pro li code{color:var(--lime)}
+.tierbox li span{font-size:16px;line-height:1.5}
+.tierbox.pro li span{color:#e4e6f5}
+.tierbox .btn{margin-top:26px}
+.tierbox .inst{margin-top:22px;display:flex;align-items:center;gap:10px;height:44px;padding:0 6px 0 14px;border-radius:12px;background:#fff;font:13.5px var(--mono);color:var(--ink);max-width:100%}
+.tierbox .inst span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.tierbox .inst .copy{background:var(--sunk);color:var(--ink)}
+@media (max-width:960px){.checks,.tiers{grid-template-columns:1fr}.ogcard{position:static}.asks{grid-template-columns:1fr}}
+@media (max-width:620px){h1{font-size:38px;max-width:none}.hero-in{padding-left:20px;padding-right:20px}.groups{grid-template-columns:1fr}.tierbox{padding:24px 20px}.tierbox li{grid-template-columns:1fr;gap:2px}.urlcheck{flex-direction:column;padding:6px}.urlcheck .btn{width:100%}}
+
+/* the first frame of a real check, shown in the terminal before the replay plays */
+.tframe .cmdl{color:#c9cde6}
+.tframe .res{display:flex;align-items:center;gap:22px;margin:10px 0 12px}
+.tframe .big{font:600 60px/1 var(--sans);letter-spacing:-.05em;color:var(--lime);font-variant-numeric:tabular-nums}
+.tframe .big span{color:#4a4f6e}
+.tframe .sum{font:13px/1.5 var(--mono);color:#9aa0bd}
+.tframe .sum b{display:block;color:#fff;font-weight:500;font-size:14px}
+.tframe .vl{display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:baseline;padding:3px 0}
+.vchip{display:inline-block;font:600 12px/1 var(--sans);padding:5px 0;border-radius:999px;text-align:center;letter-spacing:0}
+.vchip.b{background:var(--red);color:#fff}.vchip.f{background:var(--amber);color:var(--ink)}.vchip.o{background:var(--lime);color:var(--ink)}
+.tframe .vl .c{color:#7d82a3}
+/* proof: who made it */
+.maker{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;margin-top:36px;max-width:760px}
+.face{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--blue);display:grid;place-items:center;color:var(--lime);font:600 28px var(--sans);flex:none}
+.maker p{font-size:clamp(18px,1.7vw,21px);line-height:1.45;letter-spacing:-.01em;color:var(--ink)}
+.maker p+p{margin-top:4px}
+.maker .sig{display:block;margin-top:12px;font-size:14px;color:var(--muted)}
+.maker .sig a{color:var(--blue-ink);text-decoration:underline;text-underline-offset:3px}
+/* pricing: one founding card first */
+.found{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;margin-top:48px;padding:36px;background:var(--ink);color:#fff;border-radius:var(--r)}
+.found .name{font:500 13px var(--mono);color:#9ba0c4}
+.found .amt{display:flex;align-items:baseline;gap:12px;margin-top:12px}
+.found .amt b{font-weight:500;font-size:72px;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.found .amt s{font-size:24px;color:#7e8299}
+.found .when{font-size:15px;color:#b7bbd9;margin-top:8px}
+.found .open{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font:500 13px var(--mono);color:var(--ink);background:var(--lime);padding:5px 12px;border-radius:999px}
+.found .btn{margin-top:22px;width:100%;max-width:360px}
+.found .refund{margin-top:14px;font-size:15px;color:#fff}
+.found .refund b{color:var(--lime);font-weight:500}
+.found .refund span{display:block;font-size:13.5px;color:#9ba0c4;margin-top:2px}
+.found ul{list-style:none;padding:0;display:grid;gap:12px;font-size:15.5px;color:#dfe1f2;align-content:start}
+.found li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.found li::before{content:"";width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--lime) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%230a0b1a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/16px no-repeat}
+.found li b{color:#fff;font-weight:500}
+.found li.wyg{display:block}.found li.wyg::before{display:none}
+.found .wyg{font:500 12.5px var(--mono);color:#9ba0c4;margin-bottom:2px}
+.alt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 28px;margin-top:18px;font-size:15px;color:var(--ink2)}
+.alt a{color:var(--blue-ink);text-decoration:underline;text-underline-offset:3px}
+.alt code{font-size:13px;background:var(--sunk);padding:1px 6px;border-radius:6px}
+/* the close: the free check again, and who made it */
+.final .urlcheck{margin-top:30px}
+.final .cta{margin-top:18px}
+.madeby{display:inline-flex;align-items:center;gap:12px;margin-top:30px;font-size:15px;color:#eef0ff;text-align:left}
+.madeby .face{width:40px;height:40px;font-size:17px;background:rgba(255,255,255,.14)}
+.madeby a{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:960px){.found{grid-template-columns:1fr;gap:28px;padding:28px 24px}.found .btn{max-width:none}}
+@media (max-width:620px){.tframe .big{font-size:44px}.tframe .res{gap:14px}.tframe .vl{grid-template-columns:64px 1fr;gap:10px}.maker{grid-template-columns:1fr;gap:14px}.final .urlcheck{flex-direction:column;padding:6px}.final .urlcheck .btn{width:100%}.hero .cta{width:100%}.cta .install{width:100%;max-width:100%;font-size:12.5px}.cta .install>span{min-width:0;flex:1}.hero .cta .btn{width:100%}}
 </style>
 <script src="https://shipkit-stats.zionerkins.workers.dev/s.js" defer></script>
 </head>
@@ -665,16 +774,16 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Ship Kit home">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2f3cff"/><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="#d8ff3d"/></svg>
+      <svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="230" fill="#2f3cff"/><g fill="#d8ff3d"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg>
       Ship Kit
     </a>
     <nav class="navlinks" aria-label="Main">
+      <a class="hide-m" href="#checks">Checks</a>
       <a class="hide-m" href="#proof">Proof</a>
-      <a class="hide-m" href="#output">Output</a>
+      <a class="hide-m" href="#commands">Free and Pro</a>
       <a class="hide-m" href="#pricing">Pricing</a>
-      <a class="hide-m" href="#founders">Founders</a>
-      <a class="hide-m" href="#faq">FAQ</a>
-      <a class="hide-m" href="/check">Launch Check</a>
+            <a class="hide-m" href="#faq">FAQ</a>
+      <a class="hide-m" href="/check">Free web check</a>
       <a href="https://github.com/kiznnnn/shipkit">GitHub</a>
       <a class="btn btn-ink btn-sm" href="https://zione8t.gumroad.com/l/shipkit" data-buy>Get Pro</a>
     </nav>
@@ -685,33 +794,35 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 <div class="wrap">
   <section class="hero" style="padding:0" aria-labelledby="h1">
     <div class="hero-in">
-      <span class="pill"><b>New</b> A Claude Code plugin for indie makers</span>
-      <h1 id="h1">Claude Code runs your <em>launch.</em></h1>
-      <p class="lede">Ship Kit reads your repo and checks your live site, then writes the whole launch: the fixes, the page, the posts in your voice, and a dated plan. You review it. You post it.</p>
+      <h1 id="h1">Find what will sink your <em>launch.</em></h1>
+      <p class="lede">Ship Kit is the launch check for Claude Code. It finds what will hurt your launch, with the file and line for each fix. Pro writes the posts, and they don't read like AI.</p>
+      <form class="urlcheck" action="/check" method="get" role="search" aria-label="Check a page for free">
+        <label class="sr" for="hero-url">Your website address</label>
+        <input id="hero-url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="yourapp.com" required>
+        <button class="btn btn-lime" type="submit">Check my page free</button>
+      </form>
+      <p class="under">11 checks from the URL in about 10 seconds, no sign-up. The plugin runs all 24 on your repo. <a href="#checks">See every check</a></p>
       <div class="cta">
-        <a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a>
-        <a class="btn btn-ghost-w" href="https://github.com/kiznnnn/shipkit">Install the free version</a>
+        <a class="btn btn-ghost-w" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a>
+        <div class="install" aria-label="Install the free plugin"><span><span class="p">/plugin</span> marketplace add kiznnnn/shipkit</span><button class="copy" data-copy="/plugin marketplace add kiznnnn/shipkit">Copy</button></div>
       </div>
-      <div class="install" aria-label="Install command">
-        <span><span class="p">/plugin</span> marketplace add kiznnnn/shipkit</span>
-        <button class="copy" data-copy="/plugin marketplace add kiznnnn/shipkit">Copy</button>
-      </div>
-      <p class="fine" data-price-line>First 25 copies $9, then $19, then $29 · one-time · it never posts for you</p>
+      <p class="fine" data-price-line>Pro: first 25 copies $9, then $19, then $29 · one payment · 14-day refund</p>
 
-      <div class="stage" aria-label="A real run of /shipkit:launch on Afterword, replayed">
-        <div class="term">
+      <div class="stage" aria-label="A real /shipkit:check result on Afterword, then a replay of a real /shipkit:launch run">
+        <div class="term" data-ui>
           <div class="term-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="t">~/afterword · claude</span></div>
           <button class="replay" id="replay" aria-label="Replay the run"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8a5 5 0 1 0 1.6-3.7M3 2.5v2.8h2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Replay</button>
           <div class="keyhud" id="keyhud" aria-hidden="true"></div>
-          <div class="term-body" id="term" aria-live="off"></div>
+          <div class="term-body" id="term" aria-live="off"><div class="tframe"><div class="cmdl"><span class="l">❯</span> <span class="w">/shipkit:check</span>  <span class="c">a real run on Afterword's live site, in its launch week</span></div><div class="res"><div class="big">13<span>/19</span></div><div class="sum"><b>Launch check: Afterword</b>1 blocker · 5 to fix this week · 3 m 26 s</div></div><div class="vl"><span class="vchip b">Blocker</span><span>The share preview still says "in development" after launch <span class="c">index.html:7, 19, 26</span></span></div><div class="vl"><span class="vchip f">Fix</span><span>No real product above the fold at 1440×900 <span class="c">index.html:616</span></span></div><div class="vl"><span class="vchip o">OK</span><span>An in-browser demo, no mic or signup <span class="c">index.html:622–640</span></span></div></div></div>
         </div>
       </div>
     </div>
   </section>
+  <p class="req"><span>Needs Claude Code and Node 18</span><span>Private repos are fine</span><span>The page doesn't have to be live</span><span>It never posts for you</span></p>
 
   <div class="stats" data-stagger>
-    <div class="stat rv"><b data-count="24">24</b><span>Launch checks, each with the file and line to fix</span></div>
-    <div class="stat rv"><b data-count="210" data-suffix=" s">210 s</b><span>For a full pre-flight of a real Mac app</span></div>
+    <div class="stat rv"><b data-count="24">24</b><span>Launch checks, each with its evidence and the fix</span></div>
+    <div class="stat rv"><b data-count="206" data-suffix=" s">206 s</b><span>For a full pre-flight of a real Mac app</span></div>
     <div class="stat rv"><b data-count="21">21</b><span>Files written by one /shipkit:launch</span></div>
     <div class="stat rv"><b>$0</b><span>To run. No API keys, no accounts, no servers</span></div>
   </div>
@@ -720,17 +831,68 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
     <div class="track"><span>X</span><span>Reddit</span><span>Hacker News</span><span>Product Hunt</span><span>Google</span><span>llms.txt</span><span>Indie Hackers</span><span>Uneed</span><span>Peerlist</span><span>BetaList</span><span>AlternativeTo</span><span>Your inbox</span><span aria-hidden="true">X</span><span aria-hidden="true">Reddit</span><span aria-hidden="true">Hacker News</span><span aria-hidden="true">Product Hunt</span><span aria-hidden="true">Google</span><span aria-hidden="true">llms.txt</span><span aria-hidden="true">Indie Hackers</span><span aria-hidden="true">Uneed</span><span aria-hidden="true">Peerlist</span><span aria-hidden="true">BetaList</span><span aria-hidden="true">AlternativeTo</span><span aria-hidden="true">Your inbox</span></div>
   </div>
 
+  <!-- CHECKS: what the free check looks at -->
+  <section id="checks" aria-labelledby="checks-h">
+    <h2 class="split" id="checks-h">24 checks. Here's every one.</h2>
+    <p class="sub rv">Run <code>/shipkit:check</code> in your project. It reads the repo and the landing page, scores each item Blocker, Fix or OK with the evidence, and gives the exact fix. The report ends with this whole list and a verdict on every line.</p>
+    <div class="checks">
+      <div class="groups" data-stagger>
+        <div class="group rv"><h3>Trust <small>4</small></h3><ul><li>Your own domain</li><li>HTTPS and clean redirects</li><li>The download opens without a scare</li><li>Privacy, terms and a way to reach you</li></ul></div>
+        <div class="group rv"><h3>The first five seconds <small>4</small></h3><ul><li>The headline says the outcome</li><li>The real product above the fold</li><li>A way to try it right now</li><li class="hot">The share preview and its image</li></ul></div>
+        <div class="group rv"><h3>The offer <small>4</small></h3><ul><li>The price is on the page</li><li>A free start and a pay-now option</li><li>Scarcity that's real and counted</li><li>Abuse limits on free offers</li></ul></div>
+        <div class="group rv"><h3>Measurement <small>2</small></h3><ul><li>Analytics installed</li><li>A tagged link for every channel</li></ul></div>
+        <div class="group rv"><h3>Distribution <small>5</small></h3><ul><li>Reddit karma where you'll post</li><li>Show HN eligibility</li><li>A launch video that works muted</li><li>A reason for users to share</li><li>Listed on trusted directories</li></ul></div>
+        <div class="group rv"><h3>Findability <small>3</small></h3><ul><li>Title, description, canonical, noindex, sitemap</li><li>An <code>llms.txt</code></li><li>AI search allowed in, and JSON-LD</li></ul></div>
+        <div class="group rv"><h3>Launch week <small>2</small></h3><ul><li>An update path and a changelog</li><li>The shipped build tested on a clean machine</li></ul></div>
+      </div>
+      <aside class="ogcard rv" aria-labelledby="og-h" data-ui>
+        <h3 id="og-h">The share image, opened and measured.</h3>
+        <p>It doesn't stop at "og:image is set". It opens the image and reads its real type, pixel size, shape and file weight, then says what X, Facebook and LinkedIn will do with it.</p>
+        <figure class="demo"><video src="demo-15s.mp4" poster="demo-15s-poster.jpg" width="1280" height="720" muted loop playsinline autoplay preload="metadata" aria-label="A 15-second demo with no sound: an example launch post on X shows a blank link card, /shipkit:check flags the SVG share image as a blocker with the fix, and the same post then shows a big card"></video><figcaption>15 seconds, sound off. yourapp.com is an example; the check's words are the probe's own.</figcaption></figure>
+<pre><span class="c">share image · what it flags</span>
+<span class="r">blocker</span> no og:image, so the link posts as bare text
+<span class="r">blocker</span> an SVG, which X's cards don't support
+<span class="r">blocker</span> under 300×157, or over X's 5 MB limit
+<span class="r">blocker</span> the URL returns a 404 or a web page
+<span class="y">fix</span>     under 600×315, so it shows small and soft
+<span class="y">fix</span>     square or tall, so previews crop it
+<span class="y">fix</span>     over 1 MB, relative or http URL
+<span class="y">fix</span>     no summary_large_image card on X
+<span class="g">ok</span>      1200×630 PNG, 60 KB  <span class="c">(this site)</span></pre>
+        <figure class="linkcard">
+          <img src="og-preview.jpg" width="1200" height="630" loading="lazy" alt="This site's share image: Find what will sink your launch, next to an example launch check report scoring 21 of 24">
+          <figcaption><span>shipkit.tech</span><b>Ship Kit: find what will sink your launch</b></figcaption>
+        </figure>
+      </aside>
+    </div>
+    <div class="asks" data-stagger>
+      <div class="ask rv"><h3>Does my page have to be live? <b>No.</b></h3><p>Point it at the folder or the HTML file and it reads the page from disk, share image included. Check before you deploy, then again once it's up.</p></div>
+      <div class="ask rv"><h3>Does it work on a private repo? <b>Yes.</b></h3><p>Ship Kit has no server. It runs in your own Claude Code session, and the check only sends GET requests to your own public site, or none when it reads local files.</p></div>
+      <div class="ask rv"><h3>Is the check really free? <b>Yes, all 24.</b></h3><p>The check, the landing page writer and the post linter are MIT licensed on GitHub. Run them as often as you like. Pro is for writing the launch itself.</p></div>
+    </div>
+  </section>
+
   <!-- PROOF -->
   <section id="proof" aria-labelledby="proof-h">
-    <div class="fig rv">01 · Proof</div>
-    <p class="two rv" id="proof-h">Tested on a real launch. <span>We ran Ship Kit on Afterword, a Mac app that writes your meeting notes, during its launch week. Everything below is its real output.</span></p>
+    
+    <h2 class="two rv" id="proof-h">Tested on a real launch. <span>Ship Kit ran on Afterword, a Mac app, in its launch week. This is the real output.</span></h2>
+    <div class="maker rv">
+      <img class="face" src="https://unavatar.io/x/ZionE8T" width="72" height="72" alt="Zion, who makes Ship Kit" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'face',textContent:'Z'}))">
+      <div>
+        <p>I launched Afterword, my Mac app, on Oct 19.</p>
+        <p>The check found that every link preview still said "in development" after it went out.</p>
+        <p>Ship Kit now runs 24 checks like that one, and the check is free.</p>
+        <span class="sig">Zion, who makes Ship Kit · <a href="https://x.com/ZionE8T">@ZionE8T</a></span>
+      </div>
+    </div>
     <div class="proof">
-      <article class="card doc rv" aria-label="Excerpt from the real check report">
-        <div class="doc-h"><span>.shipkit/check.md · already good</span><span class="real">real output</span></div>
+      <article class="card doc rv" data-ui aria-label="Excerpt from the real check report">
+        <div class="doc-h"><span>.shipkit/check.md · Afterword</span><span class="real">real output</span></div>
         <div class="doc-b">
-          <div class="score"><b data-count="19">19</b><span>checks · 3 m 30 s · file and line for every fix</span></div>
+          <div class="score"><b>13/19</b><span>1 blocker · 5 fixes · 3 m 26 s · file and line for every fix</span></div>
           <div class="meter" aria-hidden="true" id="meter"></div>
           <ul class="items">
+            <li><span class="ic bad">!</span><div><b>Blocker: a stale share preview.</b> The site had launched, but every link card still said "in development" (index.html:7, 19, 26).</div></li>
             <li><span class="ic ok">✓</span><div><b>Try it right now.</b> An in-browser "Try a call" replay, with no mic and no signup needed.</div></li>
             <li><span class="ic ok">✓</span><div><b>Honest pricing.</b> Every plan on the page, a free start, and a pay-now lifetime option.</div></li>
             <li><span class="ic ok">✓</span><div><b>Real scarcity.</b> The free-license counter reads the live claimed count, capped at 25.</div></li>
@@ -738,7 +900,7 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
             <li><span class="ic ok">✓</span><div><b>Ready for launch week.</b> Signed Sparkle updates, a changelog, analytics and an llms.txt.</div></li>
           </ul>
         </div>
-        <div class="doc-f"><span>Plus a short list of fixes, each with the exact line to change</span><span>8,683 characters</span></div>
+        <div class="doc-f"><span>Plus five fixes, each with the exact line to change</span><span>7,803 characters</span></div>
       </article>
       <div class="catches" data-stagger>
         <div class="card catch rv"><span class="tag ok">Wrote</span><h3>A landing page in Afterword's own brand.</h3><p>One HTML file in its dark look, with a muted loop of the real demo in the hero, the real prices and its FAQ. Nothing invented.</p></div>
@@ -752,12 +914,12 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
   <section id="output" aria-labelledby="out-h">
     <div class="head-row">
       <div>
-        <div class="fig rv">02 · Output</div>
+        
         <h2 class="split" id="out-h">Open the folder it wrote.</h2>
       </div>
       <p class="sub rv" style="max-width:30em">Everything lands in <code>.shipkit/</code> in your repo. These are real files from the Afterword run, trimmed for length, not mockups.</p>
     </div>
-    <div class="card explorer rv">
+    <div class="card explorer rv" data-ui>
       <div class="tree" role="tablist" aria-label="Files" id="tree">
         <div class="root">.shipkit/</div>
         <button role="tab" aria-selected="true" data-f="check"><i></i>check.md</button>
@@ -778,10 +940,10 @@ tbody tr{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease)
 
   <!-- VOICE -->
   <section aria-labelledby="voice-h">
-    <div class="fig rv">03 · Voice</div>
+    
     <h2 class="split" id="voice-h">Posts that don't read like AI wrote them.</h2>
     <p class="sub rv">Every draft goes through a linter for AI tells, then a skeptical reader for that platform. Paste any launch post below; the same rules run right here in your browser.</p>
-    <div class="lint" data-stagger>
+    <div class="lint" data-stagger data-ui>
       <div class="card rv">
         <div class="doc-h"><span>your draft</span><span class="badge bad" id="count" aria-live="polite">…</span></div>
         <label for="draft" class="sr">Your launch post draft</label>
@@ -805,24 +967,40 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
     </div>
   </section>
 
-  <!-- COMMANDS -->
+  <!-- COMMANDS: what's free and what Pro adds -->
   <section id="commands" aria-labelledby="cmd-h">
-    <div class="fig rv">04 · Commands</div>
-    <h2 class="split" id="cmd-h">Seven commands. One is enough.</h2>
-    <div class="cmds" data-stagger>
-      <div class="cmd rv"><span class="n">01</span><code>/shipkit:launch</code><div><h3>The whole launch, in one go.</h3><p>Runs check, page and posts, then writes a dated run sheet, UTM links for every channel, a directory plan, a tracker, a reply guide, and a launch kit page with copy buttons.</p></div><span class="tier pro">PRO</span></div>
-      <div class="cmd rv"><span class="n">02</span><code>/shipkit:check</code><div><h3>Find what will hurt the launch.</h3><p>A scored pre-flight of your repo and live site. Every verdict cites its evidence, and every fix is exact.</p></div><span class="tier">FREE</span></div>
-      <div class="cmd rv"><span class="n">03</span><code>/shipkit:page</code><div><h3>A landing page from your repo.</h3><p>One HTML file in your brand, with your real screenshots, plus the share image, llms.txt and sitemap. Only facts it can source.</p></div><span class="tier">FREE</span></div>
-      <div class="cmd rv"><span class="n">04</span><code>/shipkit:lint</code><div><h3>A second reader for every post.</h3><p>A linter for AI tells, then an independent critic that reads it as that platform's crowd, and a check against the subreddit's dated rules. A score, the weakest line, and fixes in your own words.</p></div><span class="tier">FREE</span></div>
-      <div class="cmd rv"><span class="n">05</span><code>/shipkit:posts</code><div><h3>Posts in your voice.</h3><p>An X launch post and thread, a 15-second video shot list, a week of follow-ups, Reddit posts written per subreddit and checked against its rules, a Show HN only if you qualify, Product Hunt, directory blurbs at every length, and personal messages.</p></div><span class="tier pro">PRO</span></div>
-      <div class="cmd rv"><span class="n">06</span><code>/shipkit:seo</code><div><h3>One honest page a week.</h3><p>Free keyword research, a page with first-hand substance, a 15-point QA, staged for publishing, and an audit of earlier pages.</p></div><span class="tier pro">PRO</span></div>
-      <div class="cmd rv"><span class="n">07</span><code>/shipkit:recap</code><div><h3>Post your receipts.</h3><p>Totals from your launch tracker, a check of every directory listing, a results post in your voice and a 1200×675 card with your real numbers. Blank days stay blank.</p></div><span class="tier pro">PRO</span></div>
+    <h2 class="split" id="cmd-h">Free finds the problems. Pro writes the launch.</h2>
+    <p class="sub rv">Nine commands that share one product file, built from your repo with a source for every fact. Pro includes the three free ones, so you install one thing.</p>
+    <div class="tiers">
+      <div class="tierbox free rv">
+        <h3>Free, on GitHub</h3>
+        <p>Everything you need to know what's wrong, and a page to fix it with.</p>
+        <ul>
+          <li><code>/shipkit:check</code><span>24 checks on your repo and page, live or local, each with its evidence and the exact fix. Re-run it and it shows what changed.</span></li>
+          <li><code>/shipkit:page</code><span>A one-file landing page in your brand, from your repo, plus the share image, llms.txt and sitemap. It runs the check on itself before handing over.</span></li>
+          <li><code>/shipkit:lint</code><span>Paste any post. A linter flags AI tells, a separate critic reads it as that platform's crowd, and the subreddit's dated rules catch what would get it removed.</span></li>
+        </ul>
+        <div class="inst" aria-label="Install command"><span><span class="p">/plugin</span> marketplace add kiznnnn/shipkit</span><button class="copy" data-copy="/plugin marketplace add kiznnnn/shipkit">Copy</button></div>
+      </div>
+      <div class="tierbox pro rv">
+        <h3>Pro: the launch, written</h3>
+        <p>The part that takes the evenings. Every post goes through the linter and the critic before you see it.</p>
+        <ul>
+          <li><code>/shipkit:launch</code><span>Runs check, page and posts, then a dated run sheet from two weeks out to a week after, tagged links, a directory plan, a tracker and a launch kit page with Copy and Open buttons.</span></li>
+          <li><code>/shipkit:posts</code><span>X post and thread, a 15-second video shot list, a week of follow-ups, one Reddit post per subreddit for its rules, Show HN if you qualify, Product Hunt and directory blurbs.</span></li>
+          <li><code>/shipkit:outreach</code><span>20 real people who asked for something like yours in the last 14 days, from their own public posts, each with one short message and the follow-up. You send them.</span></li>
+          <li><code>/shipkit:today</code><span>The launch-week morning brief: what goes out, the words to paste, who to message, and a check that your live site and share preview still work.</span></li>
+          <li><code>/shipkit:seo</code><span>One researched, honest page a week, QA'd and staged, with last week's pages audited.</span></li>
+          <li><code>/shipkit:recap</code><span>Your real launch-week totals, a check of every listing, a results post and a 1200×675 receipts card.</span></li>
+        </ul>
+        <a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a>
+      </div>
     </div>
   </section>
 
   <!-- THE PLAN: a scroll-driven launch kit -->
   <section id="plan" aria-labelledby="tl-h">
-    <div class="fig rv">05 · The plan</div>
+    
     <h2 class="split" id="tl-h">Two weeks of launch work, already dated.</h2>
     <p class="sub rv">Ship Kit writes the plan into a launch kit page. Scroll through a launch with it.</p>
     <div class="kitscroll" id="kitscroll">
@@ -834,7 +1012,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
           <li data-k="3"><span class="d">T−0 · 9:00</span><b>Launch day, hour by hour.</b><span>Every post written, every link tagged.</span></li>
           <li data-k="4"><span class="d">T+1 → T+7</span><b>One channel a day.</b><span>Then the first weekly SEO page.</span></li>
         </ol>
-        <div class="kitui" aria-label="The launch kit page Ship Kit writes, playing through a launch">
+        <div class="kitui" data-ui aria-label="The launch kit page Ship Kit writes, playing through a launch">
           <div class="kit-bar"><span class="kit-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="kit-url">.shipkit/launch/kit.html</span></div>
           <div class="kit-body">
             <div class="kit-head"><div><span class="kit-k">Launch kit</span><b id="kit-day">Mon · T−14</b></div><div class="kit-ring" aria-hidden="true"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5"/><circle id="kit-arc" cx="18" cy="18" r="15.5"/></svg><span id="kit-pct">0%</span></div></div>
@@ -851,13 +1029,14 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 
   <!-- COMPARE -->
   <section aria-labelledby="cmp-h">
-    <div class="fig rv">06 · Compared</div>
-    <h2 class="split" id="cmp-h">Libraries teach launching. Ship Kit does it.</h2>
+    
+    <h2 class="split" id="cmp-h">Libraries teach launching. Ship Kit checks yours.</h2>
+    <p class="sub rv">The launch check for Claude Code. Free finds what will hurt your launch, with the file and line. Pro writes the posts, and they don't read like AI. It doesn't fill in directory forms or post for you.</p>
     <div class="tablewrap card rv">
       <table>
         <thead><tr><th scope="col">&nbsp;</th><th scope="col" class="us">Ship Kit</th><th scope="col">Free marketing skill packs</th><th scope="col">Doing it yourself</th></tr></thead>
         <tbody>
-          <tr><td>Reads your repo and live site</td><td class="us"><span class="y">Yes</span></td><td class="td-no">You paste context in</td><td class="td-no">—</td></tr>
+          <tr><td>Reads your repo and your page, live or local</td><td class="us"><span class="y">Yes</span></td><td class="td-no">You paste context in</td><td class="td-no">—</td></tr>
           <tr><td>Catches stale previews, hidden pricing, karma gates</td><td class="us"><span class="y">Yes, with file and line</span></td><td class="td-no">No</td><td class="td-no">Usually on launch day</td></tr>
           <tr><td>Posts in your voice, linted for AI tells</td><td class="us"><span class="y">Yes, by a script</span></td><td class="td-no">Prompted rewrites</td><td class="td-no">Hours of drafts</td></tr>
           <tr><td>A separate critic scores every post</td><td class="us"><span class="y">Yes, as each platform's crowd</span></td><td class="td-no">An editing pass, no score</td><td class="td-no">A friend, if you ask</td></tr>
@@ -865,7 +1044,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
           <tr><td>Follows each platform's current rules</td><td class="us"><span class="y">Dated, re-checked live</span></td><td class="td-no">General advice</td><td class="td-no">Trial and error</td></tr>
           <tr><td>A dated plan, links and a launch kit</td><td class="us"><span class="y">Yes</span></td><td class="td-no">Frameworks</td><td class="td-no">A spreadsheet</td></tr>
           <tr><td>A results post from your real numbers</td><td class="us"><span class="y">With a receipts card</span></td><td class="td-no">No</td><td class="td-no">A screenshot of Stripe</td></tr>
-          <tr><td>Price</td><td class="us"><span class="y">$0, or $9 once</span></td><td class="td-no">Free</td><td class="td-no">Your evenings</td></tr>
+          <tr><td>Price</td><td class="us"><span class="y">Free check; Pro is one payment</span></td><td class="td-no">Free</td><td class="td-no">Your evenings</td></tr>
         </tbody>
       </table>
     </div>
@@ -873,33 +1052,45 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 
   <!-- PRICING -->
   <section id="pricing" aria-labelledby="price-h">
-    <div class="fig rv">07 · Pricing</div>
+    
     <h2 class="split" id="price-h">The earlier you are, the less you pay.</h2>
     <p class="sub rv">One payment, no subscription, nothing to run. The price steps up as copies sell.</p>
+    <div class="found rv">
+      <div>
+        <span class="name" data-plan-name>Ship Kit Pro · founding</span>
+        <div class="amt"><b data-plan-price>$9</b><s>$29</s></div>
+        <span class="when" data-plan-when>For the first 25 copies, then $19, then $29</span><br>
+        <span class="open" data-open-line>No. 01 is open</span><br>
+        <a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a>
+        <p class="refund"><b>14-day refund</b>, no questions. Reply to the receipt.<span>One payment, no subscription. Checkout by Gumroad, which handles tax.</span></p>
+      </div>
+      <ul>
+        <li class="wyg">What you get</li>
+        <li><div><b>All nine commands.</b> The free check, page and lint, plus posts, the dated plan, outreach, the morning brief, SEO and the recap.</div></li>
+        <li data-founder-perk><div><b>A numbered founding card</b> and a spot on the founders wall.</div></li>
+        <li><div><b>Every product you make,</b> and client work.</div></li>
+        <li><div><b>Free updates</b> as platform rules change.</div></li>
+      </ul>
+    </div>
+    <div class="progress rv" hidden><span id="prog-l">Founding copies</span><div class="bar" aria-hidden="true"><i id="prog"></i></div></div>
     <div class="ladder rv" id="ladder">
       <div class="step" data-step="0"><span class="live">NOW</span><span class="d">Copies 1–25 · founding</span><b>$9</b><p>Plus a numbered spot on the founders wall.</p></div>
       <div class="step" data-step="1"><span class="live">NOW</span><span class="d">Copies 26–75 · early</span><b>$19</b><p>The same Pro, a little later.</p></div>
       <div class="step" data-step="2"><span class="live">NOW</span><span class="d">After 75</span><b>$29</b><p>The regular price.</p></div>
     </div>
-    <div class="progress rv"><span id="prog-l">0 of 25 founding copies taken</span><div class="bar" aria-hidden="true"><i id="prog"></i></div></div>
-    <div class="plans" data-stagger>
-      <div class="card plan rv"><span class="name">Ship Kit</span><div class="amt"><b>$0</b></div><span class="when">MIT licensed, on GitHub</span><ul><li>/shipkit:check</li><li>/shipkit:page</li><li>/shipkit:lint</li><li>Runs on your own Claude Code</li></ul><a class="btn btn-line" href="https://github.com/kiznnnn/shipkit">Install free</a></div>
-      <div class="card plan pro rv"><span class="name" data-plan-name>Ship Kit Pro · founding</span><div class="amt"><b data-plan-price>$9</b><s>$29</s></div><span class="when" data-plan-when>for the first 25 copies, then $19, then $29</span><ul><li>All nine commands, with outreach and a daily brief</li><li data-founder-perk>A numbered founding card and a spot on the wall</li><li>Every product you make, and client work</li><li>Free updates as platform rules change</li></ul><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a></div>
-      <div class="card plan rv"><span class="name">Ship Kit Studio</span><div class="amt"><b>$69</b></div><span class="when">Five seats, for a team or an agency</span><ul><li>Everything in Pro, for 5 people</li><li>Client launches included</li><li>Free updates</li></ul><a class="btn btn-line" href="https://zione8t.gumroad.com/l/shipkit">Get Studio</a></div>
-    </div>
-    <p class="guar rv">14-day refund, no questions. Checkout by Gumroad, which handles tax.</p>
+    <p class="alt rv"><span>Or start free: <code>/shipkit:check</code>, <code>/shipkit:page</code> and <code>/shipkit:lint</code> are MIT on <a href="https://github.com/kiznnnn/shipkit">GitHub</a>.</span><span>For a team? <a href="https://zione8t.gumroad.com/l/shipkit">Studio is $69 for five seats</a>.</span></p>
   </section>
 
   <!-- FOUNDERS -->
   <section id="founders" aria-labelledby="f-h">
-    <div class="fig rv">08 · Founders</div>
+    
     <h2 class="split" id="f-h">The founding 25.</h2>
     <p class="sub rv">Twenty-five numbered cards, one per founding copy. Each number exists once. When the 25 are gone, founding is closed for good.</p>
     <div class="f-hero">
       <div class="f-stage rv" id="f-stage">
         <div class="f3d" id="f3d" tabindex="0" role="img" aria-label="Your founding card. Drag it, or press Enter to flip it."></div>
         <div class="fcard fallback" id="fallback" aria-hidden="true">
-          <div class="top"><span><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#fff" fill-opacity=".14"/><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="#d8ff3d"/></svg>Ship Kit</span><span>FOUNDING</span></div>
+          <div class="top"><span><svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="230" fill="#fff" fill-opacity=".14"/><g fill="#d8ff3d"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg>Ship Kit</span><span>FOUNDING</span></div>
           <div><div class="num">No.</div><div class="big"><span data-next-num>01</span><em>.</em></div></div>
           <div class="who"><div><b id="fb-name">Yours?</b>Founder of Ship Kit</div><span class="mono">of 25</span></div>
         </div>
@@ -907,8 +1098,8 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
       </div>
       <div class="f-side">
         <div class="card f-count rv">
-          <span class="mono">Founding cards left</span>
-          <div class="left"><b data-left>25</b><span>of 25 · $9 each</span></div>
+          <span class="mono">Founding cards</span>
+          <div class="left"><b data-left>No. 01</b><span data-left-note>is open · 25 numbered cards, $9 each</span></div>
           <div class="bar" aria-hidden="true"><i id="f-bar"></i></div>
           <div class="editor" id="editor">
             <div class="ed-row">
@@ -938,7 +1129,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
         </ul>
         <div class="card xpost rv" aria-label="Preview of the post a founding card makes">
           <div class="xh"><span class="av"><img id="xp-av" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" hidden></span><div class="xn"><b id="xp-name">You</b><span><span id="xp-h">@yourhandle</span> · now</span></div></div>
-          <p>I'm founder No. <span data-next-num>01</span> of Ship Kit, a Claude Code plugin that runs your launch.</p>
+          <p>I'm founder No. <span data-next-num>01</span> of Ship Kit, the launch check for Claude Code.</p>
           <div class="xi"><div class="t"><span>SHIP KIT</span><span>FOUNDING</span></div><div class="xb"><div class="n"><span data-next-num>01</span><em>.</em></div><span class="xl" id="xp-logo" hidden><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""></span></div></div>
           <div class="cap">Preview of the post your card makes</div>
         </div>
@@ -950,19 +1141,25 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 
   <!-- FAQ -->
   <section id="faq" aria-labelledby="faq-h">
-    <div class="fig rv">09 · Questions</div>
+    
     <h2 class="split" id="faq-h">Fair questions.</h2>
     <div class="faq">
       <div>
-        <details><summary>Does it post for me?</summary><p>No. It never posts, sends, submits, deploys or signs up for anything. It writes files in <code>.shipkit/</code> and you post from your own accounts. That keeps your accounts safe and the posts yours.</p></details>
+        <details><summary>Does my page have to be live?</summary><p>No. Point <code>/shipkit:check</code> at the folder or HTML file and it reads the page from disk, share image included. It also checks a live URL, and both when you have both.</p></details>
         <details><summary>Will it make things up?</summary><p>It's built not to. Every fact goes into <code>.shipkit/product.md</code> with its source, and pages and posts may only use those facts. Anything missing, like a quote or a number, becomes a <code>[needs: …]</code> slot for you.</p></details>
+        <details><summary>Does it work on a private repo?</summary><p>Yes. Ship Kit has no server. It runs inside your own Claude Code session, and the check only sends GET requests to your own public site, or none at all when it reads local files.</p></details>
+        <details><summary>Why not just ask Claude Code?</summary><p>You can, and Ship Kit runs inside it. What it adds is what a prompt doesn't have: a probe that fetches your page and opens the share image to measure its real type, size and weight; a 24-item checklist built from a real launch; a linter for AI tells that runs as code; a separate critic agent that scores each post as that platform's crowd; and dated rules for each subreddit and platform.</p></details>
+        <details><summary>What does the check look at?</summary><p>24 items in seven groups: trust, the first five seconds (including the share preview and its image), the offer, measurement, distribution, findability and launch week. <a href="#checks">The full list is above</a>, and the report lists every one with its verdict and evidence.</p></details>
+        <details><summary>Does it post for me?</summary><p>No. It never posts, sends, submits, deploys or signs up for anything. It writes files in <code>.shipkit/</code> and you post from your own accounts. That keeps your accounts safe and the posts yours.</p></details>
+        <details><summary>Does it submit to directories for me?</summary><p>No. Pro writes each directory's copy at the right length, with the character counts, and a dated list of where to submit, with each submit link and its cost. You submit from your own accounts.</p></details>
         <details><summary>What do I need?</summary><p>Claude Code on any plan, and Node 18 or newer. The scripts have no dependencies and only use free public sources. There's nothing else to pay for.</p></details>
-        <details><summary>Will Reddit remove an AI-written post?</summary><p>Some subreddits will: many now remove AI-written posts, and a few ban promoting content tools at all. Ship Kit tells you which ones, from rules it dates and re-checks. It never tries to make AI text pass as yours. It drafts, then asks you to put it in your own words where a community requires it.</p></details>
-        <details><summary>Is it only for Mac apps?</summary><p>No. It was tested on a Mac app first, but it works on any repo: web apps, SaaS, CLIs, libraries, plugins and mobile apps.</p></details>
       </div>
       <div>
+        <details><summary>Will Reddit remove an AI-written post?</summary><p>Some subreddits will: many now remove AI-written posts, and a few ban promoting content tools at all. Ship Kit tells you which ones, from rules it dates and re-checks. It never tries to make AI text pass as yours. It drafts, then asks you to put it in your own words where a community requires it.</p></details>
+        <details><summary>Is it only for Mac apps?</summary><p>No. It was tested on a Mac app first, but it works on any repo: web apps, SaaS, CLIs, libraries, plugins and mobile apps.</p></details>
         <details><summary>Why not use a free skill pack?</summary><p>Use them; they're good libraries of frameworks. Ship Kit is narrower. It looks at your actual repo and live site, follows each platform's current rules, and hands you a finished, dated launch.</p></details>
-        <details><summary>How does the price ladder work?</summary><p>Copies 1 to 25 are $9. Copies 26 to 75 are $19. After that it's $29. The counter on this page shows where it stands.</p></details>
+        <details><summary>How does the price ladder work?</summary><p>Copies 1 to 25 are $9. Copies 26 to 75 are $19. After that it's $29. Once copies sell, this page shows how many are left at each price.</p></details>
+        <details><summary>What does Pro do that the free version doesn't?</summary><p>The free version finds the problems and checks your drafts. Pro writes the launch: posts for X, Reddit, Show HN and Product Hunt in your voice, a dated run sheet and launch kit, 20 real people to message, a morning brief that watches your live site in launch week, a weekly SEO page and a results recap.</p></details>
         <details><summary>Can I use it for clients?</summary><p>Yes. Pro covers every product you make, client work included. If several people on a team use it, Studio covers five.</p></details>
         <details><summary>What if it's not for me?</summary><p>Reply to your Gumroad receipt within 14 days for a full refund. No questions.</p></details>
       </div>
@@ -972,9 +1169,15 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
 
 <div class="wrap">
   <div class="final">
-    <h2>Stop freezing at <em>"now post it".</em></h2>
-    <p>Two weeks of launch work, written in one evening, in your voice.</p>
-    <div class="cta"><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a><a class="btn btn-ghost-w" href="https://github.com/kiznnnn/shipkit">Install the free version</a></div>
+    <h2>Nothing broken on <em>launch day.</em></h2>
+    <p>Check your page free, right now. About 10 seconds, no sign-up.</p>
+    <form class="urlcheck" action="/check" method="get" role="search" aria-label="Check a page for free">
+      <label class="sr" for="final-url">Your website address</label>
+      <input id="final-url" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" placeholder="yourapp.com" required>
+      <button class="btn btn-lime" type="submit">Check my page free</button>
+    </form>
+    <div class="cta"><a class="btn btn-ghost-w" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a><a class="btn btn-ghost-w" href="https://github.com/kiznnnn/shipkit">Install the free version</a></div>
+    <div class="madeby"><img class="face" src="https://unavatar.io/x/ZionE8T" width="40" height="40" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'face',textContent:'Z'}))"><span>Made by Zion, who built it while launching Afterword. <a href="https://x.com/ZionE8T">@ZionE8T</a></span></div>
   </div>
 </div>
 </main>
@@ -987,7 +1190,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
         <span class="foot-k">You scrolled the whole page.</span>
         <h2 class="foot-h">Now ship <em>yours.</em></h2>
         <p>Press the key. Then go run <code>/shipkit:launch</code> on the thing you built.</p>
-        <div class="foot-cta"><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a><span class="foot-left" data-foot-live>25 founding cards left</span></div>
+        <div class="foot-cta"><a class="btn btn-lime" href="https://zione8t.gumroad.com/l/shipkit" data-buy data-buy-label>Get a founding copy · $9</a><span class="foot-left" data-foot-live>No. 01 is open</span></div>
       </div>
       <div class="key-wrap">
         <div class="kb" aria-hidden="false">
@@ -997,7 +1200,7 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
             <span class="kc-top">
               <span class="kc-l">Ship it</span>
               <span class="kc-r" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5v7a3 3 0 0 1-3 3H6m0 0 4-4m-4 4 4 4"/></svg>return</span>
-              <span class="kc-mark" aria-hidden="true"><svg viewBox="8 8 16 16"><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="currentColor"/></svg></span>
+              <span class="kc-mark" aria-hidden="true"><svg viewBox="192 186 640 640"><g fill="currentColor"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg></span>
             </span>
           </button>
         </div>
@@ -1005,15 +1208,15 @@ I built Afterword, a Mac menu-bar app. It starts recording when a Zoom, Meet or 
       </div>
     </div>
     <div class="foot-mid">
-      <a class="brand" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2f3cff"/><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="#d8ff3d"/></svg>Ship Kit</a>
+      <a class="brand" href="#"><svg viewBox="0 0 1024 1024" aria-hidden="true"><rect width="1024" height="1024" rx="230" fill="#2f3cff"/><g fill="#d8ff3d"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg>Ship Kit</a>
       <nav class="foot-cols" aria-label="Footer">
-        <div><h3>Product</h3><a href="#proof">Proof</a><a href="#output">Output</a><a href="#commands">Commands</a><a href="#pricing">Pricing</a></div>
+        <div><h3>Product</h3><a href="#checks">The 24 checks</a><a href="#proof">Proof</a><a href="#commands">Free and Pro</a><a href="#pricing">Pricing</a></div>
         <div><h3>Get it</h3><a href="https://github.com/kiznnnn/shipkit">GitHub</a><a href="/check">Free launch check</a><a href="https://zione8t.gumroad.com/l/shipkit">Buy Pro</a><a href="#founders">Founders</a></div>
-        <div><h3>Fine print</h3><a href="https://github.com/kiznnnn/shipkit/blob/main/LICENSE">MIT license</a><a href="#faq">14-day refund</a><a href="#faq">Never posts for you</a></div>
+        <div><h3>Fine print</h3><a href="/privacy">Privacy</a><a href="/terms">Terms and refunds</a><a href="https://github.com/kiznnnn/shipkit/blob/main/CHANGELOG.md">Changelog</a><a href="https://x.com/ZionE8T">Contact: @ZionE8T</a></div>
       </nav>
       <div class="install"><span><span class="p">/plugin</span> marketplace add kiznnnn/shipkit</span><button class="copy" data-copy="/plugin marketplace add kiznnnn/shipkit">Copy</button></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Zion · Built with Claude Code</span><span class="ver mono">v0.1.0 · made on a Mac</span><a class="totop" href="#">Back to top ↑</a></div>
+    <div class="foot-bottom"><span>© 2026 Zion · Nothing broken on launch day.</span><span class="ver mono">v0.5.0 · made on a Mac</span><a class="totop" href="#">Back to top ↑</a></div>
   </div>
 </footer>
 <div class="mbar" id="mbar"><span data-mbar>No. 01 is open · $9</span><a class="btn btn-lime btn-sm" href="https://zione8t.gumroad.com/l/shipkit" data-buy>Claim it</a></div>
@@ -1026,6 +1229,7 @@ const FOUNDERS = [];            // e.g. [{ n: 1, name: "@handle" }] for buyers w
 
 const STEPS = [{ upto: 25, price: 9, label: "founding" }, { upto: 75, price: 19, label: "early" }, { upto: Infinity, price: 29, label: "" }];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
 
 // nav border on scroll
 const nav = document.getElementById('nav');
@@ -1071,15 +1275,19 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
   document.querySelectorAll('[data-buy-label]').forEach(a => (a.textContent = label));
   const name = document.querySelector('[data-plan-name]'), price = document.querySelector('[data-plan-price]'), when = document.querySelector('[data-plan-when]');
   price.textContent = '$' + step.price;
-  if (i === 0) { name.textContent = 'Ship Kit Pro · founding'; when.textContent = SOLD === 0 ? 'For the first 25 copies, then $19, then $29' : `${25 - SOLD} of 25 founding copies left, then $19`; }
-  else if (i === 1) { name.textContent = 'Ship Kit Pro · early'; when.textContent = `${75 - SOLD} early copies left, then $29`; document.querySelector('[data-founder-perk]').textContent = 'Use it on unlimited projects'; }
-  else { name.textContent = 'Ship Kit Pro'; when.textContent = 'One payment, free updates'; price.nextElementSibling?.remove(); document.querySelector('[data-founder-perk]').textContent = 'Use it on unlimited projects'; }
+  if (i === 0) { name.textContent = 'Ship Kit Pro · founding'; when.textContent = 'For the first 25 copies, then $19, then $29'; }
+  else if (i === 1) { name.textContent = 'Ship Kit Pro · early'; when.textContent = `${75 - SOLD} early copies left, then $29`; document.querySelector('[data-founder-perk]').innerHTML = '<div><b>Unlimited projects.</b></div>'; }
+  else { name.textContent = 'Ship Kit Pro'; when.textContent = 'One payment, free updates'; price.nextElementSibling?.remove(); document.querySelector('[data-founder-perk]').innerHTML = '<div><b>Unlimited projects.</b></div>'; }
   const pl = document.querySelector('[data-price-line]');
-  pl.textContent = i === 0 ? (SOLD === 0 ? 'First 25 copies $9, then $19, then $29 · one-time · it never posts for you' : `${25 - SOLD} of 25 founding copies left at $9 · then $19, then $29 · it never posts for you`) : i === 1 ? `Founding copies are gone · ${75 - SOLD} left at $19, then $29 · it never posts for you` : '$29 once · free updates · it never posts for you';
+  if (pl) pl.textContent = i === 0 ? (SOLD === 0 ? 'Pro: first 25 copies $9, then $19, then $29 · one payment · 14-day refund' : `Pro: ${25 - SOLD} of 25 founding copies left at $9, then $19, then $29 · 14-day refund`) : i === 1 ? `Pro: founding copies are gone · ${75 - SOLD} left at $19, then $29 · 14-day refund` : 'Pro: $29 once · free updates · 14-day refund';
   const prog = document.getElementById('prog'), progL = document.getElementById('prog-l');
   const top = i === 0 ? 25 : i === 1 ? 75 : SOLD || 1;
   const base = i === 1 ? 25 : 0;
   progL.textContent = i === 0 ? `${SOLD} of 25 founding copies taken` : i === 1 ? `${SOLD - 25} of 50 early copies taken` : `${SOLD} copies sold`;
+  // a counter at zero reads as no traction, so it only shows once a copy has sold
+  progL.closest('.progress').hidden = SOLD === 0;
+  const ol = document.querySelector('[data-open-line]');
+  if (ol) { ol.hidden = i !== 0; ol.textContent = SOLD === 0 ? 'No. 01 is open' : `${25 - SOLD} of 25 founding copies left`; }
   requestAnimationFrame(() => (prog.style.width = Math.min(100, ((SOLD - base) / (top - base)) * 100) + '%'));
 })();
 
@@ -1087,12 +1295,11 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
 // card artwork, shared by the 3D card and the download
 const BLUE = '#2f3cff', LIME = '#d8ff3d', INK = '#0a0b1a';
 function rr(x, px, py, w, h, r) { x.beginPath(); x.moveTo(px + r, py); x.arcTo(px + w, py, px + w, py + h, r); x.arcTo(px + w, py + h, px, py + h, r); x.arcTo(px, py + h, px, py, r); x.arcTo(px, py, px + w, py, r); x.closePath(); }
+const SAIL = ['M548 196C650 300 742 470 776 640H548Z', 'M500 300C430 400 352 520 318 640H500Z', 'M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z'].map(d => (typeof Path2D === 'function' ? new Path2D(d) : null));
 function drawMark(x, cx, cy, s, bg) {
-  x.save(); x.translate(cx, cy); x.scale(s / 32, s / 32);
-  x.fillStyle = bg; rr(x, 0, 0, 32, 32, 9); x.fill();
-  x.fillStyle = LIME; x.beginPath(); x.moveTo(16, 8.6); x.bezierCurveTo(16.5, 8.6, 16.95, 8.87, 17.2, 9.3); x.lineTo(23.6, 20.7);
-  x.bezierCurveTo(24.15, 21.7, 23.43, 22.9, 22.3, 22.9); x.lineTo(9.7, 22.9); x.bezierCurveTo(8.57, 22.9, 7.85, 21.7, 8.4, 20.7);
-  x.lineTo(14.8, 9.3); x.bezierCurveTo(15.05, 8.87, 15.5, 8.6, 16, 8.6); x.closePath(); x.fill(); x.restore();
+  x.save(); x.translate(cx, cy); x.scale(s / 1024, s / 1024);
+  x.fillStyle = bg; rr(x, 0, 0, 1024, 1024, 230); x.fill();
+  x.fillStyle = LIME; SAIL.forEach(p => p && x.fill(p)); x.restore();
 }
 function cardFront({ num, name, logo, sticker, handle }) {
   const c = document.createElement('canvas'); c.width = 2048; c.height = 1280;
@@ -1189,15 +1396,18 @@ function renderCard(spin) {
   if (CARD.handle) { av.src = 'https://unavatar.io/x/' + CARD.handle; av.hidden = false; av.onerror = () => (av.hidden = true); } else av.hidden = true;
   const xl = document.getElementById('xp-logo');
   if (CARD.logo) { xl.querySelector('img').src = CARD.logo.src; xl.hidden = false; } else xl.hidden = true;
-  document.querySelectorAll('.mini.open:not(.pending)').forEach(m => { const on = +m.dataset.n === CARD.num; m.classList.toggle('next', on); m.setAttribute('aria-pressed', on); m.querySelector('.no').textContent = on ? 'YOURS?' : 'OPEN'; m.querySelector('.tri path').setAttribute('fill', on ? '#0a0b1a' : '#d8ff3d'); });
+  document.querySelectorAll('.mini.open:not(.pending)').forEach(m => { const on = +m.dataset.n === CARD.num; m.classList.toggle('next', on); m.setAttribute('aria-pressed', on); m.querySelector('.no').textContent = on ? 'YOURS?' : 'OPEN'; m.querySelector('.tri g').setAttribute('fill', on ? '#0a0b1a' : '#d8ff3d'); });
   window.SHIPKIT_3D?.set(CARD, spin);
 }
 
 (function founders() {
   const left = 25 - TAKEN.size;
-  document.querySelectorAll('[data-left]').forEach(e => (e.textContent = left));
-  const live = document.querySelector('[data-foot-live]'); if (live) live.textContent = NEXT ? `${left} founding cards left` : 'All 25 founders are in';
-  const mb = document.querySelector('[data-mbar]'); if (mb) mb.textContent = NEXT ? `${left} founding cards left · $9` : 'Ship Kit Pro';
+  const none = TAKEN.size === 0; // until the first sale, say which number is open instead of showing a zero
+  document.querySelectorAll('[data-left]').forEach(e => (e.textContent = none ? 'No. 01' : left));
+  document.querySelectorAll('[data-left-note]').forEach(e => (e.textContent = none ? 'is open · 25 numbered cards, $9 each' : 'of 25 · $9 each'));
+  const fb = document.getElementById('f-bar'); if (fb && none) fb.parentElement.hidden = true;
+  const live = document.querySelector('[data-foot-live]'); if (live) live.textContent = !NEXT ? 'All 25 founders are in' : none ? 'No. 01 is open' : `${left} founding cards left`;
+  const mb = document.querySelector('[data-mbar]'); if (mb) mb.textContent = !NEXT ? 'Ship Kit Pro' : none ? 'No. 01 is open · $9' : `${left} founding cards left · $9`;
   requestAnimationFrame(() => (document.getElementById('f-bar').style.width = (TAKEN.size / 25) * 100 + '%'));
   const w = document.getElementById('wall');
   for (let n = 1; n <= 25; n++) {
@@ -1214,7 +1424,7 @@ function renderCard(spin) {
     } else {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'mini open'; b.dataset.n = n;
-      b.innerHTML = `<span class="no">OPEN</span><svg class="tri" viewBox="8 8 16 16" aria-hidden="true"><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="#d8ff3d"/></svg><span class="num">${pad(n)}</span><span class="claim">Make it yours</span>`;
+      b.innerHTML = `<span class="no">OPEN</span><svg class="tri" viewBox="192 186 640 640" aria-hidden="true"><g fill="#d8ff3d"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg><span class="num">${pad(n)}</span><span class="claim">Make it yours</span>`;
       b.insertAdjacentHTML('beforeend', '<span class="holo" aria-hidden="true"></span>');
       b.setAttribute('aria-label', `No. ${n}: open. Put it on your card`);
       b.addEventListener('click', () => { CARD.num = n; renderCard(true); document.getElementById('f-stage').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); });
@@ -1286,10 +1496,10 @@ function renderCard(spin) {
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
-// meter: the 19 checks
+// meter: the 19 scored checks of the real Afterword run (1 blocker, 5 fixes, 13 OK)
 (function meter() {
   const m = document.getElementById('meter');
-  for (let k = 0; k < 19; k++) { const i = document.createElement('i'); i.className = 'ok'; m.appendChild(i); }
+  ['bad', ...Array(5).fill('fix'), ...Array(13).fill('ok')].forEach(c => { const i = document.createElement('i'); i.className = c; m.appendChild(i); });
 })();
 
 // terminal replay: a real /shipkit:launch run on Afterword, condensed
@@ -1298,11 +1508,11 @@ const RUN = [
   ['<span class="c">Reading the repo, probing the live site …</span>', 900],
   ['<span class="c">Launch date</span> Tue 2026-10-27  <span class="c">· America/New_York · defaults used</span>', 600],
   ['', 200],
-  ['<span class="w">Launch check</span>   <span class="g">19 checks · 3 m 30 s</span>', 500],
-  [' <span class="g">✓</span> in-browser demo, no signup', 300],
-  [' <span class="g">✓</span> every price on the page', 300],
-  [' <span class="g">✓</span> real scarcity, abuse limits, signed updates', 300],
-  [' <span class="y">→</span> a short list of fixes, each with file and line', 700],
+  ['<span class="w">Launch check</span>   <span class="g">12/21</span> <span class="c">· 1 blocker · 9 to fix this week</span>', 500],
+  [' <span class="r">✗</span> own domain: the site is still on vercel.app', 300],
+  [' <span class="y">→</span> share preview still says "in development"  <span class="c">index.html head</span>', 300],
+  [' <span class="g">✓</span> in-browser demo, every price, real scarcity, signed updates', 300],
+  [' <span class="y">→</span> each fix with the file and the line', 700],
   ['', 200],
   ['<span class="c">voice</span>   from the repo\'s own writing', 400],
   ['<span class="b">write</span>   posts/x-launch.md          <span class="g">lint clean · critic 7/10</span>', 380],
@@ -1339,7 +1549,8 @@ async function play() {
   }
 }
 document.getElementById('replay').addEventListener('click', () => { play(); });
-new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !played) { played = true; play(); o.disconnect(); } }, { threshold: .25 }).observe(term);
+// the first frame (a real check result) stays until the terminal is mostly in view, so the first screen is never blank
+if (!reduce) new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !played) { played = true; setTimeout(play, 900); o.disconnect(); } }, { threshold: .7 }).observe(term);
 
 // output explorer: real excerpts from the Afterword test run
 const FILES = {
@@ -1602,7 +1813,7 @@ const foot = document.getElementById('foot');
   new ResizeObserver(size).observe(foot); size();
 })();
 const key = document.getElementById('keycap');
-const MARK = '<svg viewBox="8 8 16 16"><path d="M16 8.6c.5 0 .95.27 1.2.7l6.4 11.4c.55 1-.17 2.2-1.3 2.2H9.7c-1.13 0-1.85-1.2-1.3-2.2l6.4-11.4c.25-.43.7-.7 1.2-.7z" fill="currentColor"/></svg>';
+const MARK = '<svg viewBox="192 186 640 640"><g fill="currentColor"><path d="M548 196C650 300 742 470 776 640H548Z"/><path d="M500 300C430 400 352 520 318 640H500Z"/><path d="M232 690H792C778 770 716 826 640 826H384C308 826 246 770 232 690Z"/></g></svg>';
 // keyboard sounds, made in the browser: a thock on the way down, a light click on the way up
 let actx = null;
 function audio() { if (!actx) { const A = window.AudioContext || window.webkitAudioContext; if (A) actx = new A(); } if (actx?.state === 'suspended') actx.resume(); return actx; }

@@ -2,6 +2,15 @@
 
 Built from a real Mac app launch (October 2026) and from what worked for other small makers that month. Each item says why it matters, how to check it, and what a fix looks like. Skip items that don't apply to the product type and mark them N/A.
 
+24 items in seven groups:
+- **A. Trust** (4): A1 own domain, A2 HTTPS and redirects, A3 the download opens without a scare, A4 privacy, terms and a contact.
+- **B. First 5 seconds** (4): B1 the hero says the outcome, B2 the real product above the fold, B3 a way to try it now, B4 the share preview and its image.
+- **C. The offer** (4): C1 the price on the page, C2 a free start plus pay-now, C3 real scarcity, C4 abuse limits on free offers.
+- **D. Measurement** (2): D1 analytics, D2 UTM links per channel.
+- **E. Distribution** (5): E1 Reddit accounts ready, E2 Show HN eligibility, E3 a sound-off launch video, E4 a share loop, E5 trusted directories.
+- **F. Findability** (3): F1 search basics, F2 llms.txt, F3 AI search can read it.
+- **G. Launch week** (2): G1 an update path and changelog, G2 the shipped build is launch-tested.
+
 ## A. Trust: can people reach it and believe it?
 
 **A1. Own domain.**
@@ -38,8 +47,18 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - Fix: a 20-second interactive demo of the core moment, a free tier, or a no-signup trial.
 
 **B4. Share preview.**
-- Check: `og.title`, `og.description` and `twitter.card` (should be `summary_large_image`) in the probe. `ogImage.width × height` should be about 1200×630 and the image absolute. The description must be current: compare it with the product's status, because stale "coming soon" text is common after launch.
-- Fix: exact meta tags plus an image spec.
+- Why: the link preview is the first thing people see on X, iMessage, Slack, Discord and LinkedIn, and a broken one is usually found the hour after the launch post. It's the check makers say they'd miss most.
+- Check: the probe's `shareImage` block gives a verdict and plain problems. Behind it:
+  - `og:image` (or `twitter:image`) exists, loads with status 200, and is a real PNG, JPEG, WebP or GIF. SVG is a Blocker: X's card docs list JPG, PNG, WEBP and GIF only.
+  - Size: 1200×630 is the target. Under 300×157 is a Blocker (below X's minimum for the large card). Under 600×315 is a Fix (Facebook shows it as a small image, and it looks soft on X). Over 4096 on a side is a Fix.
+  - Shape: about 1.91:1. Square or tall images get cropped top and bottom; say which part is lost.
+  - Weight: over 5 MB is a Blocker (X's limit for card images); over 1 MB is a Fix (slow previews).
+  - The URL is absolute and https. Relative paths are a Fix: Facebook and LinkedIn need an absolute URL.
+  - `og:image:width`/`height`, if present, match the real file.
+  - `twitter:card` is `summary_large_image`, and `og:title` and `og:description` are set.
+  - The description is current: compare it with the product's status, because stale "coming soon" text is common after launch.
+- In local mode the probe reads the image file the tag points to, so this works before the site is deployed. If the tag points at a domain that isn't live yet, say the file exists locally and must ship with the site.
+- Fix: the exact meta tags plus an image spec (1200×630 PNG or JPEG, under 1 MB, key text away from the edges). Offer to make the image: an `og.html` card in the product's brand, rendered with headless Chrome as `/shipkit:page` does.
 
 ## C. The offer
 
@@ -63,7 +82,7 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 ## D. Measurement
 
 **D1. Analytics is installed.**
-- Check: `analytics` in the probe.
+- Check: `analytics` in the probe. It knows the common providers; a self-hosted or custom counter won't be named, so look at `externalScripts` and the page's script tags before calling analytics missing.
 - Fix: a free option the maker can add in one line (Vercel Analytics, Cloudflare Web Analytics, GoatCounter, Umami self-hosted).
 
 **D2. UTM-tagged links for every channel.**

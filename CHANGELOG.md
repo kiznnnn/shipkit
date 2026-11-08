@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.5.0 (2026-11-08)
+
+Built from what people asked about Ship Kit on X this week: "what are the checks?", "does the page have to be live?", "does it work on a private repo?", and "the OG image size check would've saved me ugly previews".
+
+- **The check works before you deploy.** Point `/shipkit:check` at a folder or an HTML file and the probe reads the page from disk, share image included. It also finds `index.html` in `public/`, `static/`, `dist/`, `out/`, `build/`, `docs/` or `site/`. Nothing has to be live.
+- **A real share-image check.** The probe now opens the image your `og:image` points to and gives a verdict with plain reasons: SVGs that X won't show, images under X's 300×157 minimum, small or soft images under 600×315, square or tall images that get cropped, files over X's 5 MB limit or over 1 MB, relative or http URLs, `og:image:width`/`height` that don't match the file, and a missing `summary_large_image` card, `og:title` or `og:description`. It now reads GIF and WebP sizes too.
+- **The report says what it checked.** `check.md` ends with a table of all 24 checks, each with its verdict and evidence, and the chat summary names the seven groups. The share preview always gets a line, even when it passes.
+- **Re-checks show progress.** The previous report is kept in `.shipkit/check-history/`, and the new one has a "Since last check" section: the old and new score and every item that changed.
+- **The page checks itself.** `/shipkit:page` runs the same probe on its own output in local mode and won't hand over a page whose share preview fails.
+- **Private repos, said plainly.** The check, both READMEs and the site now say it: Ship Kit has no server, it runs in your own Claude Code session, and the check only sends GET requests to your own public site.
+- **A score card for every check.** `/shipkit:check` now writes `.shipkit/score-card.png`, a 1200×630 card with that run's score and its top two findings, read straight from `check.md`. Post it with the one-line summary if you like; nothing is posted for you.
+- **A new mark.** The triangle is now a sail: a mainsail, a jib and a hull, on the same blue and lime. Verdicts use the brand's colours everywhere: Blocker red, Fix amber, OK lime.
+- **Pro: `/shipkit:today` watches the site in launch week.** From the day before launch to the day after, it probes the live site and puts a broken share preview, a `noindex`, an error page or a missing price at the top of the brief.
+- **Pro: real proof, collected the honest way.** The run sheet now has a T+1 to T+3 task to ask your first happy users for one sentence you may quote. Answers go into `product.md` with the date permission was given, so the page and posts can use them.
+- **Pro: one line asking for a rating.** After the first successful `/shipkit:launch` in a project, the report ends with one line inviting an honest Gumroad rating. It shows once, asks for no particular score, and nothing depends on it.
+- **Fixes.**
+  - The founders sync now updates the Pro price in the site's JSON-LD offers list (it only matched a single offer, so the price would have stayed at $9 after the ladder moved).
+  - `places.mjs --name` works (outreach called it, and it was ignored).
+  - The outreach skill no longer passes a `--file` flag the linter doesn't have.
+  - Outreach always writes `people.csv`, `messages.md` and `outreach.json`, even when an honest search finds nobody, so the kit's Outreach tab still has its note.
+  - The Pro manifest and marketplace descriptions list all nine commands.
+  - The probe ignores HTML comments, so a commented-out analytics snippet or a price in a comment no longer counts as real.
+  - The Pro licence names all three free skills (check, page and lint).
+- **Tests.** 26 unit tests (7 new: the score card, local mode, a missing share-image file, share-image verdicts, GIF and WebP sizes, `places --name`, and HTML comments), and the founders test now checks the JSON-LD price in the offers list.
+- **Site.** shipkit.tech leads with "Find what will sink your launch." and a free check box, shows a real check result on the first screen, lists all 24 checks, answers "does it have to be live?" and "private repo?" up front, splits free from Pro, and adds privacy and terms pages.
+
 ## 0.4.0 (2026-10-21)
 
 - **New: `/shipkit:outreach` (Pro).** It finds 20 real people who'd want your product right now, from their own public posts from the last 14 days: people asking for a tool, complaining about the problem, or about to need it. It writes one personal message for each one, in your voice, under 60 words, with the follow-up for when they say yes. Every message goes through the linter and the critic. The results go into `people.csv` and an Outreach tab in the kit. You send each one yourself.

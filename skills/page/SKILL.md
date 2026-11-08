@@ -57,6 +57,11 @@ Also write:
 
 - Render the page at 1440 px and at 390 px wide, with a browser tool if you have one, or headless Chrome as above. Look at both screenshots (Read them). Check that nothing overflows, nothing overlaps, the hero fits above the fold on desktop, and the first screen on mobile shows the headline, the one-line description and the button.
 - Run `node "<skill-dir>/references/slop.mjs" .shipkit/page/index.html` and fix anything new.
+- Run the launch check's probe on the page folder, in local mode (nothing needs to be live):
+  ```bash
+  node "<skill-dir>/references/check-site.mjs" .shipkit/page
+  ```
+  `shareImage.verdict` must be `ok`: the share image exists, is 1200×630-ish, under 1 MB and not an SVG, and `twitter:card`, `og:title` and `og:description` are set. Also confirm `title`, `description`, `canonical`, `lang`, `viewport` and a `SoftwareApplication` in `jsonLd` are present, and that `robots.txt`, `sitemap.xml` and `llms.txt` are found. If `og.png` couldn't be rendered, the verdict will say so; tell the maker in the hand-over.
 - Re-read every factual claim on the page against `.shipkit/product.md`. Remove anything without a source.
 
 Fix and re-render until it passes.
@@ -68,7 +73,9 @@ Tell the maker:
 - where the files are, and how to preview them: `open .shipkit/page/index.html`
 - the hero line and the three section headlines, so they can react to the words without opening it
 - what's a placeholder (shots, links, domain, brand)
+- the probe's result for the share preview, in one line ("Share image: 1200×630 PNG, 180 KB, big card on X")
 - how to ship it: copy the folder's files to their site's root, or deploy it as its own static site. **They** deploy; you don't.
+- that `/shipkit:check` can check it before it's live: it reads `.shipkit/page/` from disk.
 
 ## Rules
 

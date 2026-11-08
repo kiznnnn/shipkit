@@ -75,6 +75,9 @@ export function apply(html, { sold, founders }) {
   const list = JSON.stringify(founders.map((f) => ({ n: f.n, name: f.name })));
   let out = html.replace(/const SOLD = \d+;/, `const SOLD = ${sold};`);
   out = out.replace(/const FOUNDERS = \[[^\n]*?\];/, `const FOUNDERS = ${list};`);
+  // JSON-LD: the Pro offer's price follows the ladder. The site lists it as {"name":"Ship Kit Pro","price":"9"} inside an
+  // offers array; older pages had a single offer object, which is still handled.
+  out = out.replace(/("name":"Ship Kit Pro","price":")\d+(")/, `$1${price}$2`);
   out = out.replace(/("offers":\{"@type":"Offer","price":")\d+(")/, `$1${price}$2`);
   if (!/const SOLD = \d+;/.test(out) || !/const FOUNDERS = \[/.test(out)) throw new Error('could not find the SOLD and FOUNDERS lines');
   return out;
