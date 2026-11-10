@@ -2,14 +2,16 @@
 
 Built from a real Mac app launch (October 2026) and from what worked for other small makers that month. Each item says why it matters, how to check it, and what a fix looks like. Skip items that don't apply to the product type and mark them N/A.
 
-24 items in seven groups:
-- **A. Trust** (4): A1 own domain, A2 HTTPS and redirects, A3 the download opens without a scare, A4 privacy, terms and a contact.
-- **B. First 5 seconds** (4): B1 the hero says the outcome, B2 the real product above the fold, B3 a way to try it now, B4 the share preview and its image.
+31 items in seven groups:
+- **A. Trust** (6): A1 own domain, A2 HTTPS, redirects and www, A3 the download opens without a scare, A4 privacy, terms and a contact, A5 nothing secret is public, A6 the buy button and links work.
+- **B. First 5 seconds** (7): B1 the hero says the outcome, B2 the real product above the fold, B3 a way to try it now, B4 the share preview and its image, B5 nothing left over from the template, B6 phone and tab basics, B7 it loads fast.
 - **C. The offer** (4): C1 the price on the page, C2 a free start plus pay-now, C3 real scarcity, C4 abuse limits on free offers.
-- **D. Measurement** (2): D1 analytics, D2 UTM links per channel.
+- **D. Measurement** (3): D1 analytics, D2 UTM links per channel, D3 a way to stay in touch.
 - **E. Distribution** (5): E1 Reddit accounts ready, E2 Show HN eligibility, E3 a sound-off launch video, E4 a share loop, E5 trusted directories.
-- **F. Findability** (3): F1 search basics, F2 llms.txt, F3 AI search can read it.
+- **F. Findability** (4): F1 search basics, F2 llms.txt, F3 AI search can read it, F4 wrong URLs get a real 404.
 - **G. Launch week** (2): G1 an update path and changelog, G2 the shipped build is launch-tested.
+
+The probe grades eight of these on its own, in `verdicts`: A5, A6, B4, B5, B6, B7, D3 and F4. Each has a block with plain `problems` (severity, problem, fix): `secretsCheck`, `linkCheck`, `shareImage`, `leftovers`, `basics`, `speedCheck`, `email` and `notFound`. Use its verdict unless you have evidence it's wrong (say what), and quote its problem lines. If the probe reports `botChallenge`, the site served a bot check instead of the page: grade nothing from the live HTML, say so first, run the probe on the local source if the repo has it, and tell the maker to test the link preview by hand, because X's and Slack's preview bots may be blocked too. A `minor` problem never changes a verdict on its own: list it under the item's evidence, not as a separate fix.
 
 ## A. Trust: can people reach it and believe it?
 
@@ -18,9 +20,10 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - Check: `hostKind` in the probe.
 - Fix if: the site is on a free subdomain. Suggest a domain (about $10/yr), and say it can wait until after launch. Always test the main link in an X draft reply the day before.
 
-**A2. HTTPS and clean redirects.**
-- Check: `httpRedirectsToHttps`, `redirects` and `status` in the probe.
-- Fix if: there's more than one hop, any 4xx or 5xx, or http stays on http.
+**A2. HTTPS, clean redirects and www.**
+- Check: `httpRedirectsToHttps`, `redirects`, `status`, `httpsWorks`/`httpsError` and `altHost` in the probe.
+- Blocker if: `httpsWorks` is false (https doesn't load: quote `httpsError`), or the page returns 4xx/5xx.
+- Fix if: there's more than one hop, http stays on http, or `altHost.works` is false (people who type www., or leave it off, get an error: say which address fails and that the host's domain settings need a redirect to the main one).
 
 **A3. The download opens without a scare (desktop and mobile apps).**
 - Check, on macOS: is the app signed with a Developer ID and notarized? Look for `notarytool`, `codesign --options runtime` or `xcrun stapler` in the build scripts. Self-signed or ad-hoc apps trigger "can't be opened" and need System Settings › Privacy & Security › Open Anyway.
@@ -30,6 +33,18 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - Check: `links.privacy`, `links.terms` and `links.mailto` in the probe.
 - Blocker if: the site takes payments with neither a privacy page nor a terms page.
 - For products that touch sensitive data (audio, screen, files, health), the page should say plainly what leaves the device, and early users will ask for kill switches.
+
+**A5. Nothing secret is public.**
+- Why: vibe-coded and quickly shipped sites often put an API key in the page's JavaScript or deploy the `.env` file with the site. Launch traffic includes people who look, and a leaked key costs money within hours.
+- Check: `secretsCheck` in the probe. Live, it reads the page and up to 12 of its own scripts for secret key patterns (Stripe, OpenAI, Anthropic, AWS, GitHub, Slack, SendGrid, Google OAuth, private keys, Supabase `service_role`), and asks for `/.env`, `/.env.local`, `/.env.production` and `/.git/config`. Local, it reads the scripts on disk and flags an `.env` in the folder that gets uploaded. Keys are masked in the output; never print one in full.
+- Blocker if: any live secret or a public `.env`/`.git`. Public-by-design keys (Stripe `pk_live_`, Supabase anon, Firebase or Maps `AIza…`) are fine and not flagged.
+- Fix: revoke and reissue the key first, then move it to a server-side environment variable. Deleting the file alone isn't enough: the key has been public.
+
+**A6. The buy button and links work.**
+- Why: the checkout link is the one link that must work, and it's often still in test mode or pointing at an unpublished product.
+- Check: `linkCheck` in the probe. It opens every checkout link (Stripe, Gumroad, Lemon Squeezy, Polar, Dodo, Paddle, the app stores and more), the page's own links (up to 40) and up to 12 outside links. It flags Stripe test-mode links and a `pk_test_` key with no live key. Links that answer 401, 403 or 429 are listed in `unverified` (often bot protection), not as broken.
+- Blocker if: a checkout link is broken or in test mode. Fix if: the page's own links go to missing pages. Outside links that broke are minor.
+- Ask the maker to buy their own product once in a private window with a real card (and refund it), the week before launch. It's the only way to test the receipt email and the license delivery.
 
 ## B. First 5 seconds: do they get it?
 
@@ -60,6 +75,20 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - In local mode the probe reads the image file the tag points to, so this works before the site is deployed. If the tag points at a domain that isn't live yet, say the file exists locally and must ship with the site.
 - Fix: the exact meta tags plus an image spec (1200×630 PNG or JPEG, under 1 MB, key text away from the edges). Offer to make the image: an `og.html` card in the product's brand, rendered with headless Chrome as `/shipkit:page` does.
 
+**B5. Nothing left over from the template.**
+- Why: AI builders and starters ship with default titles, descriptions and share images ("Vite + React + TS", "Create Next App", "Lovable Generated Project", the builder's own share image), and they survive to launch day more often than anything else.
+- Check: `leftovers` in the probe: default titles and descriptions, a builder's share image or `twitter:site`, Lorem ipsum, "your headline here", unrendered `{{ tags }}`, `$NaN` or `[object Object]`, TODO/FIXME in the copy, localhost and example.com links, a canonical or `og:url` on another domain, and an old © year.
+- Blocker if: it's in the title, description, share tags or headline, a link points at localhost, or the canonical points at another domain. Fix if: it's in the body copy.
+
+**B6. Phone and tab basics.**
+- Check: `basics` in the probe: the viewport tag, a favicon that loads, an apple-touch-icon, `lang`, alt text on images, and http scripts or images on an https page.
+- Blocker if: no viewport tag (phones show a shrunken desktop page), or scripts load over http (browsers block them). Fix if: no favicon. The rest are minor.
+
+**B7. It loads fast.**
+- Check: `speedCheck` and `speed` in the probe: the server's response time (one measurement from this machine), the HTML size, the images, scripts and styles the HTML asks for, and the heaviest three files.
+- Fix if: an image is over 1 MB, the page loads over 5 MB, or the server takes over 1.5 s to answer. Name the files from `speed.heaviest`.
+- For a real-device number, point the maker to PageSpeed Insights (pagespeed.web.dev), which is free. Don't quote a score you didn't measure.
+
 ## C. The offer
 
 **C1. The price is on the page.**
@@ -89,6 +118,11 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - Check: does the maker have a link per channel? Ask, or check the launch plan if there is one.
 - Fix: list the links, `?utm_source=<channel>&utm_medium=social&utm_campaign=launch-<yyyymmdd>`, one each for X, Reddit, HN, Product Hunt and each directory.
 
+**D3. A way to stay in touch.**
+- Why: most launch visitors don't buy on day one. An email field ("get the launch discount", "hear when it ships") is the only way to reach them again.
+- Check: `email` in the probe: an email input, or a known newsletter or form tool (Buttondown, Kit, Mailchimp, beehiiv, Substack, Loops, MailerLite, Tally, Formspree and others).
+- Fix if: none. Fine to mark N/A when the product itself collects emails on signup and the page leads straight to it.
+
 ## E. Distribution
 
 **E1. Reddit accounts are ready.**
@@ -116,6 +150,7 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 **F1. Search basics.**
 - Check: `title` (under 60 characters, says what it is), `description` (under 160 characters), `canonical`, `robots.txt.blocksAll` false, `noindex` false, `sitemap.xml` present, `lang` set.
 - A `noindex` on the live page (in `metaRobots` or the `X-Robots-Tag` header) is a Blocker: search engines drop the page. It's often left over from a staging build.
+- A canonical tag that points at another domain (often the preview URL, like `*.vercel.app`) is a Blocker too; `leftovers` reports it.
 
 **F2. `llms.txt`.**
 - Why: AI answers increasingly cite small products that explain themselves in plain text.
@@ -129,6 +164,11 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 - Status: Fix if any answer-time crawler is blocked or there's no JSON-LD. OK otherwise. Say which bots are blocked by name and don't change the maker's training-data choice.
 - Fix: offer the robots.txt lines for the answer-time crawlers and a JSON-LD block built from `.shipkit/product.md`.
 
+**F4. Wrong URLs get a real 404.**
+- Why: a single-page app that answers every URL with the home page and status 200 (a "soft 404") hides broken links and lets search engines index junk pages.
+- Check: `notFound` in the probe. Live, it asks for a made-up URL. Local, it looks for a `404.html`; with none, mark it Ask, since many hosts add one.
+- Fix if: the made-up URL returns 200. The fix is a `404.html` at the root for static hosts, or a catch-all route that sets status 404.
+
 ## G. Keeping launch-week users
 
 **G1. An update path and a changelog (apps).**
@@ -138,3 +178,4 @@ Built from a real Mac app launch (October 2026) and from what worked for other s
 **G2. Launch-test the build.**
 - Why: a build that quits on launch is the most common launch-week bug, and users find it before you do.
 - Ask: has the exact build being shipped been opened on a clean machine, and does it stay open?
+- Also ask, for web apps: are spend limits or usage alerts set on the host and on any paid API the app calls (a launch spike can run up a bill overnight), and will errors reach the maker (an error tracker or the host's logs) rather than only the users?

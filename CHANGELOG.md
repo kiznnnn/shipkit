@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.6.0 (2026-11-10)
+
+The check now looks for the launch-day mistakes that aren't on most checklists: the ones you only find after the post is out.
+
+- **31 checks, up from 24.** Seven new ones, and the probe grades them itself, so every run says the same thing:
+  - **A5 Nothing secret is public.** It reads the page and its own scripts for live API keys (Stripe, OpenAI, Anthropic, AWS, GitHub, Slack, SendGrid, Google OAuth, private keys and a Supabase `service_role` key), and asks the live site for `/.env`, `/.env.local`, `/.env.production` and `/.git/config`. Keys are shown masked. Keys that are public by design (Stripe `pk_live_`, Supabase anon, Firebase) aren't flagged.
+  - **A6 The buy button and links work.** It opens every checkout link (Stripe, Gumroad, Lemon Squeezy, Polar, Dodo, Paddle, the app stores and more), the page's own links and a few outside ones. A Stripe test-mode link, a `pk_test_` key with no live key, or a dead product page is a blocker. Links behind bot protection are listed as unverified, not broken.
+  - **B5 Nothing left over from the template.** "Vite + React + TS" in the tab, "Lovable Generated Project" as the description, the AI builder's own share image, Lorem ipsum, "your headline here", `{{ tags }}`, `$NaN`, localhost and example.com links, a canonical on the preview domain, and an old © year.
+  - **B6 Phone and tab basics.** The viewport tag, a favicon that loads, an apple-touch-icon, `lang`, alt text, and http scripts on an https page.
+  - **B7 It loads fast.** Server response time, page weight, and any image over 1 MB, named.
+  - **D3 A way to stay in touch.** An email field or a newsletter tool, for visitors who aren't ready to buy today.
+  - **F4 Wrong URLs get a real 404,** not the home page with status 200.
+  - A2 now also checks that `www.` (or the bare domain) works, and a site without working HTTPS gets a full report with the reason, not "fetch failed".
+- **See your link in five apps.** `/shipkit:check` writes `.shipkit/share-preview.png`: approximate mock-ups of how the link looks on X, iMessage, LinkedIn, Slack and Discord, built from the page's own tags. `/shipkit:page` makes one for its page too.
+- **A verdict at the top.** `check.md` starts with one line: not ready (with the blocker count), ready with fixes, or ready, then the single fix to do first.
+- **Fixes say where to click.** The probe recognises the site builder (Framer, Webflow, Wix, Squarespace, WordPress, Shopify, Ghost, Carrd, Lovable, Next.js, Astro and others), and the report gives the menu path in that builder, from the builder's own docs, instead of raw HTML.
+- **Quality of life.** `/shipkit:check quick` grades the eight self-graded checks in about a minute. `/shipkit:check https://myapp.com` or `/shipkit:check ./public` names what to check. The probe saves its JSON to `.shipkit/probe.json`. Network errors are in plain words ("the domain doesn't resolve"). `--no-external` skips links to other sites.
+- **Pro: `/shipkit:today` watches the checkout.** In launch week, a broken or test-mode checkout, a leaked key or a template leftover goes to the top of the morning brief.
+- **Fixes.**
+  - The favicon was read from `apple-touch-icon` when that tag came first.
+  - Titles and descriptions with HTML entities (`&middot;`, `&#39;`) are decoded.
+  - Alpine and Vue `:href` bindings are no longer read as links.
+  - A self-hosted analytics counter is no longer reported as "no analytics".
+  - The web check at shipkit.tech/check says "That address doesn't load" for a domain that doesn't exist, instead of "The page returned 530". It also checks for template leftovers, a test-mode or broken checkout, and a favicon.
+- **Tests.** 31 unit tests (5 new: a broken local site, a clean site with no false alarms, a live server with a public `.env`, `.git` and a soft 404, plain network errors, and the share preview).
+
 ## 0.5.0 (2026-11-08)
 
 Built from what people asked about Ship Kit on X this week: "what are the checks?", "does the page have to be live?", "does it work on a private repo?", and "the OG image size check would've saved me ugly previews".

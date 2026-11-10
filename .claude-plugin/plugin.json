@@ -1,7 +1,7 @@
 {
   "name": "shipkit",
-  "version": "0.5.0",
-  "description": "Ship Kit (free): a 24-point launch pre-flight that works before your page is live (share image size included), a landing page written from your repo, and a post linter with an independent critic that checks drafts against each platform's rules. /shipkit:check, /shipkit:page and /shipkit:lint.",
+  "version": "0.6.0",
+  "description": "Ship Kit (free): a 31-point launch pre-flight that works before your page is live (share image size, leaked keys, a test-mode checkout and template leftovers included), a landing page written from your repo, and a post linter with an independent critic that checks drafts against each platform's rules. /shipkit:check, /shipkit:page and /shipkit:lint.",
   "author": {
     "name": "Zion"
   },

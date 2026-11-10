@@ -4,7 +4,7 @@
 
 ## Commands
 
-- /shipkit:check (free): a scored launch pre-flight of 24 items across trust, the first five seconds (including the share preview: the OG image's real type, pixel size, shape and file weight), the offer, measurement, distribution, findability and launch week, with the evidence and the fix for each, and a 1200×630 score card for that run. It works on a live URL or on the local page source before it's deployed, and on private repos: it runs in the maker's own Claude Code and has no server.
+- /shipkit:check (free): a scored launch pre-flight of 31 items across trust (including leaked API keys, a public .env and a broken or test-mode checkout), the first five seconds (including the share preview: the OG image's real type, pixel size, shape and file weight, and leftover template text), the offer, measurement, distribution, findability and launch week, with the evidence and the fix for each, a 1200×630 score card for that run, and mock-ups of the link's preview on X, iMessage, LinkedIn, Slack and Discord. It works on a live URL or on the local page source before it's deployed, and on private repos: it runs in the maker's own Claude Code and has no server.
 - /shipkit:page (free): a one-file landing page from the repo, with the share image, llms.txt and sitemap. It runs the check's probe on its own output.
 - /shipkit:lint (free): checks any launch post with a linter for AI tells, an independent critic and the target platform's dated rules.
 - /shipkit:posts (Pro): X, Reddit, Show HN, Product Hunt, directory and personal-message drafts in the maker's voice.

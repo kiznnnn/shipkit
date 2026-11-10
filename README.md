@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/banner.png" alt="Ship Kit: find what will sink your launch. A launch check report with a 21 of 24 example score, one blocker, one fix and one OK." width="100%"></p>
+<p align="center"><img src="assets/banner.png" alt="Ship Kit: find what will sink your launch. A launch check report with a 27 of 31 example score, one blocker, one fix and one OK." width="100%"></p>
 
 # Ship Kit
 
@@ -10,7 +10,7 @@ This repo is the free half: three commands that work on any project.
 
 | Command | What you get |
 |---|---|
-| `/shipkit:check` | A launch pre-flight: 24 checks on your repo and your landing page, live or still local, each with its evidence and the exact fix. The share preview check reads your real OG image: its type, pixel size, shape and file weight. |
+| `/shipkit:check` | A launch pre-flight: 31 checks on your repo and your landing page, live or still local, each with its evidence and the exact fix. The share preview check reads your real OG image: its type, pixel size, shape and file weight. It also catches leaked API keys, a public `.env`, a broken or test-mode checkout and leftover template text. |
 | `/shipkit:page` | A landing page written from your repo: one HTML file in your brand, using your real screenshots and real facts, plus the share image, `llms.txt`, `sitemap.xml` and `robots.txt`. |
 | `/shipkit:lint` | A second reader for any launch post. A linter flags AI and hype tells. An independent critic reads the post as that platform's crowd. Then it's checked against the subreddit's dated rules: self-promotion, AI-written posts and banned product types. You get a verdict, a score, the weakest line and fixes in your own words. |
 
@@ -41,23 +41,27 @@ Open your project in Claude Code and type:
 /shipkit:check
 ```
 
-You get `.shipkit/check.md`: blockers, fixes for this week, what's already good, the questions only you can answer, and a table of every check with its verdict and evidence. It ends in a one-line score you can share (`Launch check: <passed>/<scored>`), and it writes that run's share card to `.shipkit/score-card.png` (1200×630, with your score and the top two findings). Run it again after you fix things and it shows what changed.
+You get `.shipkit/check.md`: a one-line verdict (not ready, ready with fixes, or ready), blockers, fixes for this week, what's already good, the questions only you can answer, and a table of every check with its verdict and evidence. It ends in a one-line score you can share (`Launch check: <passed>/<scored>`), and it writes that run's share card to `.shipkit/score-card.png` (1200×630, with your score and the top two findings). It also writes `.shipkit/share-preview.png`: how your link looks on X, iMessage, LinkedIn, Slack and Discord. Run it again after you fix things and it shows what changed.
+
+Short on time? `/shipkit:check quick` runs only the probe's eight self-graded checks, in about a minute. You can also name what to check: `/shipkit:check https://myapp.com` or `/shipkit:check ./public`.
 
 ### What it checks
 
-24 items in seven groups. The full list, with why each matters, is in [`skills/check/references/checklist.md`](skills/check/references/checklist.md).
+31 items in seven groups. The full list, with why each matters, is in [`skills/check/references/checklist.md`](skills/check/references/checklist.md).
 
 | Group | Checks |
 |---|---|
-| Trust | own domain, HTTPS and redirects, the download opens without a scare, privacy/terms/contact |
-| First 5 seconds | the hero says the outcome, the real product above the fold, a way to try it now, **the share preview and its image** |
+| Trust | own domain, HTTPS, redirects and www, the download opens without a scare, privacy/terms/contact, **no leaked keys or public `.env`**, **the buy button and links work** |
+| First 5 seconds | the hero says the outcome, the real product above the fold, a way to try it now, **the share preview and its image**, no template leftovers, phone and tab basics, page weight |
 | The offer | price on the page, a free start plus pay-now, real scarcity, abuse limits on free offers |
-| Measurement | analytics, UTM links per channel |
+| Measurement | analytics, UTM links per channel, a way to stay in touch |
 | Distribution | Reddit karma, Show HN eligibility, a sound-off launch video, a share loop, trusted directories |
-| Findability | title/description/canonical/noindex/sitemap, `llms.txt`, AI crawlers in robots.txt and JSON-LD |
+| Findability | title/description/canonical/noindex/sitemap, `llms.txt`, AI crawlers in robots.txt and JSON-LD, a real 404 |
 | Launch week | an update path and changelog, the shipped build is launch-tested |
 
-The share preview check opens the actual image your `og:image` points to and reports its type, size in pixels, shape and file weight: SVGs that X won't show, square images that get cropped, files over X's 5 MB limit, relative URLs, a missing `summary_large_image` card.
+The share preview check opens the actual image your `og:image` points to and reports its type, size in pixels, shape and file weight: SVGs that X won't show, square images that get cropped, files over X's 5 MB limit, relative URLs, a missing `summary_large_image` card, or a share image left over from an AI builder's template.
+
+Most of what makers miss isn't in a launch checklist: a Stripe link still in test mode, a `.env` that went up with the site, "Vite + React + TS" in the tab, a `$NaN` price, a canonical tag pointing at the preview URL. The probe looks for those on every run, and when it can tell your site builder (Framer, Webflow, Wix, Squarespace, WordPress, Shopify, Carrd, Lovable, Next.js and others) it says where the fix goes in that builder.
 
 ### Does my page have to be live?
 
@@ -69,7 +73,7 @@ No. Point it at the folder or file and it reads the page from disk, share image 
 
 ### Does it work on a private repo?
 
-Yes. Ship Kit has no server. It runs inside your own Claude Code session, and the check only sends GET requests to your own public site (none at all when it reads local files).
+Yes. Ship Kit has no server. It runs inside your own Claude Code session. The check only sends GET requests: to your own public site, and to the checkout and outside links on your page to see that they open (add `--no-external` to the probe to skip those). Nothing from your repo leaves your machine.
 
 ### The other two
 
